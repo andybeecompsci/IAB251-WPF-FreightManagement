@@ -9,10 +9,10 @@
     <Grid>
         <StackPanel Margin="10">
             <TextBlock Text="First Name:" />
-            <TextBox x:Name="FirstName" />
+            <TextBox x:Name="FirstNametxt" />
 
-            <TextBlock Text="Family Name:" Margin="0,10,0,0" />
-            <TextBox x:Name="FamilyNametxt" />
+            <TextBlock Text="Last Name:" Margin="0,10,0,0" />
+            <TextBox x:Name="LastNametxt" />
 
             <TextBlock Text="Email Address:" Margin="0,10,0,0" />
             <TextBox x:Name="EmailAddresstxt" />
@@ -21,7 +21,7 @@
             <TextBox x:Name="PhoneNumbertxt" />
 
             <TextBlock Text="Employee Type:" Margin="0,10,0,0" />
-            <ComboBox x:Name="cmbEmployeeTypetxt">
+            <ComboBox x:Name="EmployeeTypetxt">
                 <ComboBoxItem Content="Admin" />
                 <ComboBoxItem Content="Quotation Officer" />
                 <ComboBoxItem Content="Booking Officer" />
