@@ -23,6 +23,22 @@ namespace IAB251_ASS2.Models
         }
 
         //make quotation request into quotation???
-                
+
+
+
+        // store quotations in a list
+        private List<Quotation> quotations = new List<Quotation>();
+
+        // retreive quotations
+        public List<Quotation> GetQuotations()
+        {
+            return quotations;
+        }
+
+        // retreive quotation by number
+        public Quotation QuotationByNumber(int quotationNumber)
+        {
+            return quotations.FirstOrDefault(q => q.QuotationNumber == quotationNumber);
+        }
     }
 }

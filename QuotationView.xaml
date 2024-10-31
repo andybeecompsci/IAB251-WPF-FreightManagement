@@ -1,0 +1,28 @@
+﻿<Window x:Class="IAB251_WPF_ASS2.QuotationView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IAB251_WPF_ASS2"
+        mc:Ignorable="d"
+        Title="QuotationView" Height="450" Width="800">
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBlock Text="Quotation List" FontSize="16" Margin="0,0,0,10"/>
+            <DataGrid x:Name="QuotationGridView" AutoGenerateColumns="False" Height="250" ItemsSource="{Binding Quotations}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Quotation Number" Binding="{Binding QuotationNumber}" Width="*"/>
+                    <DataGridTextColumn Header="Client Name" Binding="{Binding ClientName}" Width="*"/>
+                    <DataGridTextColumn Header="Date Issued" Binding="{Binding DateIssue, StringFormat=d}" Width="*"/>
+                    <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*"/>
+                    <DataGridTextColumn Header="Container Type" Binding="{Binding ContainerType}" Width="*"/>
+                    <DataGridTextColumn Header="Scope" Binding="{Binding Scope}" Width="*"/>
+                    <DataGridTextColumn Header="Charges" Binding="{Binding Charges, StringFormat=C}" Width="*"/>
+                    <DataGridTextColumn Header="Depot Charges" Binding="{Binding DepotCharges, StringFormat=C}" Width="*"/>
+                    <DataGridTextColumn Header="LCL Charges" Binding="{Binding LCLCharges, StringFormat=C}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Content="Load Quotations" Click="LoadQuotations" Margin="0,10,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>
