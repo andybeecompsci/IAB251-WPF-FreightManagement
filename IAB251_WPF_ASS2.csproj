@@ -58,6 +58,9 @@
     <Compile Include="QuotationView.xaml.cs">
       <DependentUpon>QuotationView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RateSchedule.xaml.cs">
+      <DependentUpon>RateSchedule.xaml</DependentUpon>
+    </Compile>
     <Page Include="EmployeeRegistration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -80,6 +83,10 @@
     <Page Include="QuotationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RateSchedule.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
