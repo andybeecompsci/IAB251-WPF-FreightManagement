@@ -40,7 +40,7 @@ namespace IAB251_WPF_ASS2
         private void RequestQuotation_Click(object sender, RoutedEventArgs e)
         {
             // Assuming you have a class called QuotationWindow for the quotation form
-            var quotationWindow = new Quotationpagename(); // Ensure the QuotationWindow class exists
+            var quotationWindow = new quotationpagename(); // Ensure the QuotationWindow class exists
             quotationWindow.Show();
         }
     }
