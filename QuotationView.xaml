@@ -9,7 +9,7 @@
     <Grid>
         <StackPanel Margin="10">
             <TextBlock Text="Quotation List" FontSize="16" Margin="0,0,0,10"/>
-            <DataGrid x:Name="QuotationGridView" AutoGenerateColumns="False" Height="250" ItemsSource="{Binding Quotations}">
+            <DataGrid x:Name="QuotationGridView" AutoGenerateColumns="False" Height="250">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Quotation Number" Binding="{Binding QuotationNumber}" Width="*"/>
                     <DataGridTextColumn Header="Client Name" Binding="{Binding ClientName}" Width="*"/>

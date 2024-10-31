@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿//using System.ComponentModel.DataAnnotations;
 
 using System;
 using System.Collections.Generic;
@@ -13,22 +13,22 @@ namespace IAB251_ASS2.Models
         //customer attributes
         
 
-        [Required(ErrorMessage = "First Name is required")]
+        //[Required(ErrorMessage = "First Name is required")]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "Last Name is required")]
+        //[Required(ErrorMessage = "Last Name is required")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "Email Address is required")]
+        //[Required(ErrorMessage = "Email Address is required")]
         public string EmailAddress { get; set; }
 
-        [Required(ErrorMessage = "Password is required")]
+        //[Required(ErrorMessage = "Password is required")]
         public string Password {  get; set; }
 
-        [Required(ErrorMessage = "Phone Number is required")]
+        //[Required(ErrorMessage = "Phone Number is required")]
         public string PhoneNumber { get; set; }
 
-        [Required(ErrorMessage = "Address is required")]
+        //[Required(ErrorMessage = "Address is required")]
         public string Address { get; set; }
 
         public string Company { get; set; }

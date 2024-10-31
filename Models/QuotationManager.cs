@@ -29,14 +29,14 @@ namespace IAB251_ASS2.Models
         // ABOVE STUFF NEEDS TO BE COMPATIBLE WITH THE BELOW
 
         // store quotations in a list
-        private List<Quotation> quotations = new List<Quotation>();
         
         //make list of pending quotations 
-        public List<Quotation> GetPendingRequests()
+        public List<QuotationRequest> GetPendingRequests()
         {
-            return quotations.Where(r => r.Status == "Pending").ToList();
+            return quotationRequests.Where(r => r.Status == "Pending").ToList();
         }
 
+        private List<Quotation> quotations = new List<Quotation>();
 
         // retreive quotations
         public List<Quotation> GetQuotations()
@@ -51,9 +51,9 @@ namespace IAB251_ASS2.Models
         }
 
         // accepts quotation and updates status to Accepted
-        public void AcceptQuotationRequest(int requestNumber)
+        public void AcceptQuotationRequest(int requestID)
         {
-            var request = quotations.FirstOrDefault(r => r.QuotationNumber == requestNumber);
+            var request = quotationRequests.FirstOrDefault(r => r.RequestID == requestID);
             if (request != null)
             {
                 request.Status = "Accepted";
@@ -61,9 +61,9 @@ namespace IAB251_ASS2.Models
         }
 
         // rejects quotation and updates status to Rejected
-        public void RejectQuotationRequest(int requestNumber, string message)
+        public void RejectQuotationRequest(int requestID, string message)
         {
-            var request = quotations.FirstOrDefault(r => r.QuotationNumber == requestNumber);
+            var request = quotationRequests.FirstOrDefault(r => r.RequestID == requestID);
             if (request != null)
             {
                 request.Status = "Rejected";
