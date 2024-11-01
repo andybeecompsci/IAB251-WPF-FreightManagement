@@ -98,6 +98,7 @@ namespace IAB251_ASS2.Models
 
 
         // display formatted NatureJob as a single string 
-        public string NatureJobDescription => string.Join(", ", NatureJob);
+
+        //public string NatureJobDescription => string.Join(", ", NatureJob);
     }
 }

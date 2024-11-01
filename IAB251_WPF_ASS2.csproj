@@ -55,8 +55,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CustomerLogin.xaml.cs">
+      <DependentUpon>CustomerLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerRegistration.xaml.cs">
+      <DependentUpon>CustomerRegistration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BoolClass.cs" />
     <Compile Include="OfficerRequestView.xaml.cs">
       <DependentUpon>OfficerRequestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuotationRequest.xaml.cs">
+      <DependentUpon>QuotationRequest.xaml</DependentUpon>
     </Compile>
     <Compile Include="QuotationView.xaml.cs">
       <DependentUpon>QuotationView.xaml</DependentUpon>
@@ -64,6 +74,14 @@
     <Compile Include="RateSchedule.xaml.cs">
       <DependentUpon>RateSchedule.xaml</DependentUpon>
     </Compile>
+    <Page Include="CustomerLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomerRegistration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EmployeeRegistration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -84,6 +102,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="OfficerRequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuotationRequest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
