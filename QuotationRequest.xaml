@@ -1,0 +1,41 @@
+﻿<Window x:Class="IAB251_WPF_ASS2.QuotationRequestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Quotation Request" Height="500" Width="800">
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBlock Text="Source:" />
+            <TextBox x:Name="SourceTextBox" />
+
+            <TextBlock Text="Destination:" Margin="0,10,0,0" />
+            <TextBox x:Name="DestinationTextBox" />
+
+            <TextBlock Text="Container Quantity:" Margin="0,10,0,0" />
+            <TextBox x:Name="ContainerQuantityTextBox" />
+
+            <TextBlock Text="Goods Type:" Margin="0,10,0,0" />
+            <TextBox x:Name="GoodsTypeTextBox" />
+
+            <TextBlock Text="Width:" Margin="0,10,0,0" />
+            <TextBox x:Name="WidthTextBox" />
+
+            <TextBlock Text="Height:" Margin="0,10,0,0" />
+            <TextBox x:Name="HeightTextBox" />
+
+            <TextBlock Text="Port Type:" Margin="0,10,0,0" />
+            <TextBox x:Name="PortTypeTextBox" />
+
+            <TextBlock Text="Packing Type:" Margin="0,10,0,0" />
+            <TextBox x:Name="PackingTypeTextBox" />
+
+            <TextBlock Text="Quarantine Details:" Margin="0,10,0,0" />
+            <TextBox x:Name="QuarantineDetailsTextBox" />
+
+            <TextBlock Text="Fumigation Details:" Margin="0,10,0,0" />
+            <TextBox x:Name="FumigationDetailsTextBox" />
+
+            <Button Content="Submit Request" Click="SubmitRequest_Click" Margin="0,20,0,0"/>
+            <TextBlock x:Name="MessageTextBlock" Foreground="Red" Margin="0,10,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>
