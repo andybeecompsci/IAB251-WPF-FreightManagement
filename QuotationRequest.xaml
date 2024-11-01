@@ -16,8 +16,12 @@
             <TextBlock Text="Goods Type:" Margin="0,10,0,0" />
             <TextBox x:Name="GoodsTypeTextBox" />
 
-            <TextBlock Text="Width:" Margin="0,10,0,0" />
-            <TextBox x:Name="WidthTextBox" />
+            <TextBlock Text="Width (Feet):" Margin="0,10,0,0" />
+            <!-- ComboBox for Width with options 20 and 40 -->
+            <ComboBox x:Name="WidthComboBox" Width="200" Height="30">
+                <ComboBoxItem Content="20" />
+                <ComboBoxItem Content="40" />
+            </ComboBox>
 
             <TextBlock Text="Height:" Margin="0,10,0,0" />
             <TextBox x:Name="HeightTextBox" />

@@ -1,6 +1,7 @@
 ﻿using IAB251_ASS2.Models;
 using System;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace IAB251_WPF_ASS2
 {
@@ -23,7 +24,7 @@ namespace IAB251_WPF_ASS2
                 string.IsNullOrWhiteSpace(DestinationTextBox.Text) ||
                 string.IsNullOrWhiteSpace(ContainerQuantityTextBox.Text) ||
                 string.IsNullOrWhiteSpace(GoodsTypeTextBox.Text) ||
-                string.IsNullOrWhiteSpace(WidthTextBox.Text) ||
+                WidthComboBox.SelectedItem == null ||  // Check if an option is selected
                 string.IsNullOrWhiteSpace(HeightTextBox.Text))
             {
                 MessageTextBlock.Text = "All fields are required!";
@@ -37,6 +38,9 @@ namespace IAB251_WPF_ASS2
                 return;
             }
 
+            string selectedWidth = ((ComboBoxItem)WidthComboBox.SelectedItem).Content.ToString();
+
+
             // Create a new QuotationRequest instance
             var request = new QuotationRequest
             {
@@ -46,7 +50,7 @@ namespace IAB251_WPF_ASS2
                 Destination = DestinationTextBox.Text,
                 ContainerQuantity = containerQuantity,
                 GoodsType = GoodsTypeTextBox.Text,
-                Width = WidthTextBox.Text,
+                Width = selectedWidth,  // Use the selected width value from ComboBox
                 Height = HeightTextBox.Text,
                 PortType = PortTypeTextBox.Text,
                 PackingType = PackingTypeTextBox.Text,
@@ -69,7 +73,7 @@ namespace IAB251_WPF_ASS2
             DestinationTextBox.Clear();
             ContainerQuantityTextBox.Clear();
             GoodsTypeTextBox.Clear();
-            WidthTextBox.Clear();
+            //WidthComboBox.Clear();
             HeightTextBox.Clear();
             PortTypeTextBox.Clear();
             PackingTypeTextBox.Clear();
