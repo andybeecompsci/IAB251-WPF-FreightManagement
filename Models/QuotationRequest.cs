@@ -40,7 +40,7 @@ namespace IAB251_ASS2.Models
 
         //Nature of Package
         public string GoodsType {  get; set; }
-        public string Width { get; set; }
+        public string Width { get; set; } // select between 20 and 40
         public string Height { get; set; }
 
         // Nature of Job

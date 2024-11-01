@@ -10,6 +10,7 @@ namespace IAB251_ASS2.Models
     {
         public int QuotationNumber { get; set; }
         public string ClientName { get; set; }
+        public string ClientEmail { get; set; }
         public DateTime DateIssue { get; set; }
         public string Status { get; set; } // must be Accept, Reject or Pending
         public string ContainerType { get; set; }
@@ -22,10 +23,11 @@ namespace IAB251_ASS2.Models
 
 
 
-        public Quotation (int quotationnumber, string clientname, DateTime dateissue, string status, string containertype, string scope, decimal charges, decimal depotcharges, decimal lclcharges)
+        public Quotation (int quotationnumber, string clientname, string clientemail, DateTime dateissue, string status, string containertype, string scope, decimal charges, decimal depotcharges, decimal lclcharges)
         {
             QuotationNumber = quotationnumber;
             ClientName = clientname;
+            ClientEmail = clientemail;
             DateIssue = dateissue;
             Status = status;
             ContainerType = containertype;

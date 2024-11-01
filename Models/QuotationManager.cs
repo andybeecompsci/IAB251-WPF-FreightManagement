@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -42,6 +43,48 @@ namespace IAB251_ASS2.Models
         public List<Quotation> GetQuotations()
         {
             return quotations;
+        }
+
+        // add quotation
+        public void AddQuotation(Quotation quotation)
+        {
+            quotations.Add(quotation);
+        }
+
+        public Quotation RequestToQuotation (QuotationRequest request)
+        {
+
+            int quotationnumber = request.RequestID;
+            string clientname = $"{request.CustomerInfo.FirstName} {request.CustomerInfo.LastName}";
+            string clientemail = $"{request.CustomerInfo.EmailAddress}";
+            DateTime dateissue = DateTime.Now;
+            string status = request.Status;
+            string containertype = request.Width;
+            //> 5 ? "40" : "20"; // Assuming larger container for higher quantity
+            string scope = $"{request.GoodsType}{request.PortType}, {request.PackingType}, {request.QuarantineDetails}, {request.FumigationDetails}";
+
+            //decimal baseCharge = containertype == "40" ? 2000m : 1000m;
+            decimal charges =  0;//baseCharge * request.ContainerQuantity;
+            decimal depotcharges = 0; // Assume a fixed depot charge
+            decimal lclcharges = 0; // Assume a fixed LCL delivery charge
+
+
+            Quotation quotation = new Quotation(
+                quotationnumber,
+                clientname,
+                clientemail,
+                dateissue,
+                status,
+                containertype,
+                scope,
+                charges,
+                depotcharges,
+                lclcharges
+            );
+
+            // Add quotation to list
+            AddQuotation(quotation);
+            return quotation;
         }
 
         // retreive quotation by number
