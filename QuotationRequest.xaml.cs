@@ -10,6 +10,8 @@ namespace IAB251_WPF_ASS2
         private readonly CustomerManager customerManager;
         private readonly QuotationManager quotationManager;
 
+
+
         public QuotationRequestWindow(CustomerManager customerManager, QuotationManager quotationManager)
         {
             InitializeComponent();
@@ -38,26 +40,60 @@ namespace IAB251_WPF_ASS2
                 return;
             }
 
+            // Retrieve logged-in customer
+            var loggedInCustomer = customerManager.IsLoggedIn ? customerManager.GetCustomerByEmail(customerManager.CurrentUserEmail) : null;
+
+            // Debug: Check if loggedInCustomer and CurrentUserEmail are correct
+            Console.WriteLine($"Attempting to retrieve customer for email: {customerManager.CurrentUserEmail}");
+            if (loggedInCustomer != null)
+            {
+                Console.WriteLine($"Retrieved Customer: {loggedInCustomer.FirstName}, {loggedInCustomer.LastName}");
+            }
+            else
+            {
+                Console.WriteLine("No logged-in customer found.");
+            }
+
+            //combo boxes
             string selectedWidth = ((ComboBoxItem)WidthComboBox.SelectedItem).Content.ToString();
+            string selectedPort = ((ComboBoxItem)PortComboBox.SelectedItem).Content.ToString();
+            string selectedPack = ((ComboBoxItem)PackingComboBox.SelectedItem).Content.ToString();
 
 
             // Create a new QuotationRequest instance
             var request = new QuotationRequest
             {
                 RequestID = GenerateRequestID(),
-                CustomerInfo = customerManager.IsLoggedIn ? customerManager.GetCustomerByEmail(customerManager.CurrentUserEmail) : null,
+                CustomerInfo = loggedInCustomer,
                 Source = SourceTextBox.Text,
                 Destination = DestinationTextBox.Text,
                 ContainerQuantity = containerQuantity,
                 GoodsType = GoodsTypeTextBox.Text,
                 Width = selectedWidth,  // Use the selected width value from ComboBox
                 Height = HeightTextBox.Text,
-                PortType = PortTypeTextBox.Text,
-                PackingType = PackingTypeTextBox.Text,
+                PortType = selectedPort,
+                PackingType = selectedPack,
                 QuarantineDetails = QuarantineDetailsTextBox.Text,
                 FumigationDetails = FumigationDetailsTextBox.Text,
                 Status = "Pending"
             };
+
+            // debugging to check if works
+            Console.WriteLine("Quotation Request Created:");
+            Console.WriteLine($"RequestID: {request.RequestID}");
+            Console.WriteLine($"CustomerInfo: {loggedInCustomer?.FirstName}, {loggedInCustomer?.LastName}");
+            Console.WriteLine($"Source: {request.Source}");
+            Console.WriteLine($"Destination: {request.Destination}");
+            Console.WriteLine($"Container Quantity: {request.ContainerQuantity}");
+            Console.WriteLine($"Goods Type: {request.GoodsType}");
+            Console.WriteLine($"Width: {request.Width}");
+            Console.WriteLine($"Height: {request.Height}");
+            Console.WriteLine($"Port Type: {request.PortType}");
+            Console.WriteLine($"Packing Type: {request.PackingType}");
+            Console.WriteLine($"Quarantine Details: {request.QuarantineDetails}");
+            Console.WriteLine($"Fumigation Details: {request.FumigationDetails}");
+            Console.WriteLine($"Status: {request.Status}");
+            Console.WriteLine($"Message: {request.Message}");
 
             // Add to quotation manager
             quotationManager.AddQuotationRequest(request);
@@ -75,12 +111,14 @@ namespace IAB251_WPF_ASS2
             GoodsTypeTextBox.Clear();
             //WidthComboBox.Clear();
             HeightTextBox.Clear();
-            PortTypeTextBox.Clear();
-            PackingTypeTextBox.Clear();
+            //PortTypeTextBox.Clear();
+            //PackingTypeTextBox.Clear();
             QuarantineDetailsTextBox.Clear();
             FumigationDetailsTextBox.Clear();
             MessageTextBlock.Text = string.Empty;
         }
+
+        
 
         private int GenerateRequestID()
         {

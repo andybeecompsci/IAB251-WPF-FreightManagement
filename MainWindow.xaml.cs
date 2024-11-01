@@ -18,32 +18,38 @@ namespace IAB251_WPF_ASS2
 {
     public partial class MainWindow : Window
     {
-        private CustomerManager customerManager;
-        private QuotationManager quotationManager;
+        private static CustomerManager _customerManager = new CustomerManager();
+        private QuotationManager _quotationManager = new QuotationManager(); 
 
         public MainWindow()
         {
             InitializeComponent();
-            customerManager = new CustomerManager();
-            DataContext = customerManager; // Bind CustomerManager to the DataContext
+            _customerManager = new CustomerManager();
+            _quotationManager = new QuotationManager();
+            DataContext = _customerManager; // Bind CustomerManager to the DataContext
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
-            var registerWindow = new CustomerRegistration(customerManager);
+            var registerWindow = new CustomerRegistration(_customerManager);
             registerWindow.Show();
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            var loginWindow = new CustomerLogin(customerManager);
+            var loginWindow = new CustomerLogin(_customerManager);
             loginWindow.Show();
         }
 
         private void RequestQuotation_Click(object sender, RoutedEventArgs e)
         {
-            var requestWindow = new QuotationRequestWindow(customerManager, quotationManager);
+            var customerManager = new CustomerManager(); 
+            var quotationManager = new QuotationManager(); // Initialize QuotationManager
+            var requestWindow = new QuotationRequestWindow(_customerManager, _quotationManager);
             requestWindow.Show();
         }
+
+        
+
     }
 }

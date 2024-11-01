@@ -72,9 +72,14 @@ namespace IAB251_ASS2.Models
                 bool isValid = customer != null && customer.Password == password;
                 if (isValid)
                 {
-                    SetLoggedInStatus(true);
-                }
-                return isValid;
+                SetLoggedInStatus(true);
+                CurrentUserEmail = email; //setcurrentuseremail
+
+                //debug
+                Console.WriteLine($"CurrentUserEmail set to: {CurrentUserEmail}");  // Debug: Print CurrentUserEmail
+
+            }
+            return isValid;
             }
 
             protected void OnPropertyChanged(string propertyName)
