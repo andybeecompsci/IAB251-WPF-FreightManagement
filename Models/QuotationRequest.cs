@@ -34,8 +34,9 @@ namespace IAB251_ASS2.Models
         public string Source { get; set; }
         public string Destination { get; set; }
         public int ContainerQuantity { get; set; }
-        public string NaturePackage { get; set; } 
+        public string NaturePackage { get; set; } // split into Goods type, Width, Height
         public List<string> NatureJob { get; set; } = new List<string>(); //holding import/export, packing/unpacking, quarantine info NEED TO BE DONE
+        // split into Import/Export, Packing/Unpacking, Quarantine Details, Fumigation Details
         public string Status { get; set; } = "Pending";
         public string Message { get; set; } = string.Empty;
 

@@ -29,7 +29,7 @@ namespace IAB251_WPF_ASS2
             InitializeComponent();
         }
 
-        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        private void RegisterButtonClick(object sender, RoutedEventArgs e)
         {
             // Validate the input fields
             if (string.IsNullOrWhiteSpace(FirstNametxt.Text) ||
