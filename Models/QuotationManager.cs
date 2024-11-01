@@ -60,13 +60,16 @@ namespace IAB251_ASS2.Models
             DateTime dateissue = DateTime.Now;
             string status = request.Status;
             string containertype = request.Width;
-            //> 5 ? "40" : "20"; // Assuming larger container for higher quantity
-            string scope = $"{request.GoodsType}{request.PortType}, {request.PackingType}, {request.QuarantineDetails}, {request.FumigationDetails}";
+            string scope = $"Container Quantity: {request.ContainerQuantity}Goods Type: {request.GoodsType}, Port Type: {request.PortType}, Packing Type: {request.PackingType}, " +
+                $"Quarantine Detail: {request.QuarantineDetails}, Fumigation Details: {request.FumigationDetails}";
 
+            // figure out charges
             //decimal baseCharge = containertype == "40" ? 2000m : 1000m;
             decimal charges =  0;//baseCharge * request.ContainerQuantity;
             decimal depotcharges = 0; // Assume a fixed depot charge
             decimal lclcharges = 0; // Assume a fixed LCL delivery charge
+
+            // add discount stuff
 
 
             Quotation quotation = new Quotation(

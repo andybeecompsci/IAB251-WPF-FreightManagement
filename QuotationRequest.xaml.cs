@@ -98,6 +98,9 @@ namespace IAB251_WPF_ASS2
             // Add to quotation manager
             quotationManager.AddQuotationRequest(request);
 
+            // tranform quotation request to quotation
+            quotationManager.RequestToQuotation(request);
+
             // Clear form and show success message
             ClearForm();
             MessageTextBlock.Text = "Quotation request submitted successfully!";
