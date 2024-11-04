@@ -21,10 +21,13 @@ namespace IAB251_WPF_ASS2
     public partial class CustomerOrEmployee : Window
     {
         private static CustomerManager _customerManager = new CustomerManager();
+        private static EmployeeManager _employeeManager = new EmployeeManager();
         //employee version of this ^^^ goes here
         public CustomerOrEmployee()
         {
             _customerManager = new CustomerManager();
+            _employeeManager = new EmployeeManager();
+
             //employee version of this ^^^ goes here
 
             InitializeComponent();
@@ -39,9 +42,9 @@ namespace IAB251_WPF_ASS2
 
         private void Employee_Click(object sender, RoutedEventArgs e)
         {
-            var EmployeeWindow = new CustomerLogin(_customerManager);
+            var employeeMainWindow = new EmployeeMainWindow(_employeeManager, new QuotationManager());
 
-            EmployeeWindow.Show();
+            employeeMainWindow.Show();
 
         }
     }
