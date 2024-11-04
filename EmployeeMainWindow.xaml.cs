@@ -52,5 +52,21 @@ namespace IAB251_WPF_ASS2
             var quotationviewWindow = new QuotationView(_quotationManager);
             quotationviewWindow.Show();
         }
+
+        private void ViewRateSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            //var employeeManager = new EmployeeManager();
+            //var quotationManager = new QuotationManager(); // Initialize QuotationManager
+            var ratescheduleviewWindow = new RateSchedule();
+            ratescheduleviewWindow.Show();
+        }
+
+        private void PrepareQuotations_Click(object sender, RoutedEventArgs e)
+        {
+            var employeeManager = new EmployeeManager();
+            var quotationManager = new QuotationManager(); // Initialize QuotationManager
+            var requestviewWindow = new OfficerRequestView(_quotationManager);
+            requestviewWindow.Show();
+        }
     }
 }

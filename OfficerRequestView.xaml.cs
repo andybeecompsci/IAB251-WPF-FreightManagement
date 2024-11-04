@@ -24,10 +24,10 @@ namespace IAB251_WPF_ASS2
         private QuotationManager quotationManager;
         private QuotationRequest selectedRequest;
         public double discountPercentage;
-        public OfficerRequestView()
+        public OfficerRequestView(QuotationManager quotationManager)
         {
             InitializeComponent();
-            quotationManager = new QuotationManager();
+            this.quotationManager = quotationManager;
 
             // bind quotation requests to grid
             RequestDataGrid.ItemsSource = quotationManager.GetPendingRequests();
