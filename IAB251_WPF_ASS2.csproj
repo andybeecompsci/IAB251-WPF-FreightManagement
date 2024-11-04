@@ -64,6 +64,9 @@
     <Compile Include="CustomerRegistration.xaml.cs">
       <DependentUpon>CustomerRegistration.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EmployeeLogin.xaml.cs">
+      <DependentUpon>EmployeeLogin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\BoolClass.cs" />
     <Compile Include="OfficerRequestView.xaml.cs">
       <DependentUpon>OfficerRequestView.xaml</DependentUpon>
@@ -86,6 +89,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomerRegistration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmployeeLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
