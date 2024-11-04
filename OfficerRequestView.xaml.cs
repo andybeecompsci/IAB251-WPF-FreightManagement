@@ -45,11 +45,11 @@ namespace IAB251_WPF_ASS2
 
                 // Calculate and display discount
                 discountPercentage = quotationManager.CalculateDiscount(request.ContainerQuantity, request.QuarantineDetails, request.FumigationDetails);
-                DiscountTextBox.Text = discountPercentage.ToString("0.##");
+                DiscountAmount.Text = discountPercentage.ToString("0.##");
             }
         }
 
-        private void ApplyDiscountAndAccept_Click(object sender, RoutedEventArgs e)
+        private void DiscountAndAccept(object sender, RoutedEventArgs e)
         {
             if (selectedRequest != null)
             {

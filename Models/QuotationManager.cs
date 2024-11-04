@@ -65,16 +65,10 @@ namespace IAB251_ASS2.Models
 
             // figure out charges
             // NEED FUNCTION FROM RATE SCHEDULE I THINK
-            decimal baseCharge = containertype == "40" ? 2000m : 1000m;
             //decimal charges =  0;//baseCharge * request.ContainerQuantity;
             decimal depotcharges = 0; // Assume a fixed depot charge
             decimal lclcharges = 0; // Assume a fixed LCL delivery charge
 
-            // add discount stuff
-            // Calculate discount percentage
-            //decimal discountPercentage = CalculateDiscount(request.ContainerQuantity, request.QuarantineDetails, request.FumigationDetails);
-            //decimal discountAmount = charges * (discountPercentage / 100);
-            //decimal discountcharges = charges - discountAmount;
 
             Quotation quotation = new Quotation(
                 quotationnumber,
