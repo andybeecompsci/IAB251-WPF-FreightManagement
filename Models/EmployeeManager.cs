@@ -1,43 +1,105 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace IAB251_ASS2.Models
 {
-    public class EmployeeManager
+    public class EmployeeManager : INotifyPropertyChanged
     {
-        // validatation
-        public bool IsLoggedIn { get; private set; } = false;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private bool _isLoggedIn;
+        private string _currentUserEmail;
+
+        public bool IsLoggedIn
+        {
+            get => _isLoggedIn;
+            private set
+            {
+                if (_isLoggedIn != value)
+                {
+                    _isLoggedIn = value;
+                    OnPropertyChanged(nameof(IsLoggedIn));
+                }
+            }
+        }
+
+        // Stores the email of the currently logged-in user
+        public string CurrentUserEmail
+        {
+            get => _currentUserEmail;
+            private set
+            {
+                if (_currentUserEmail != value)
+                {
+                    _currentUserEmail = value;
+                    OnPropertyChanged(nameof(CurrentUserEmail));
+                }
+            }
+        }
+
         public void SetLoggedInStatus(bool status)
         {
             IsLoggedIn = status;
         }
 
-        private List<Employee> employees = new List<Employee>();
+        // List of customers
+        private List<Employee> Employees { get; set; } = new List<Employee>();
 
-        public void AddEmployee(Employee employee)
+        // Add new customer
+        public void AddCustomer(Employee employee)
         {
-            employees.Add(employee);
+            Employees.Add(employee);
         }
 
-        //public Employee GetEmployeeByEmail(string email)
+        // Retrieve customer via email
+        public Employee GetEmployeeByEmail(string email)
+        {
+            return Employees.FirstOrDefault(c => c.Email.Equals(email, StringComparison.OrdinalIgnoreCase));
+        }
+
+        // Validate login
+        public bool ValidateLogin(string email, string password)
+        {
+            var employee = GetEmployeeByEmail(email);
+            bool isValid = employee != null && employee.Password == password;
+            if (isValid)
+            {
+                SetLoggedInStatus(true);
+                CurrentUserEmail = email; //setcurrentuseremail
+
+                //debug
+                Console.WriteLine($"CurrentUserEmail set to: {CurrentUserEmail}");  // Debug: Print CurrentUserEmail
+
+            }
+            return isValid;
+        }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+
+        // OLD STUFF
+
+        //// validatation
+        //public bool IsLoggedIn { get; private set; } = false;
+        //public void SetLoggedInStatus(bool status)
         //{
-        //    return employees.FirstOrDefault(c => c.Email.Equals(email, StringComparison.OrdinalIgnoreCase));
+        //    IsLoggedIn = status;
         //}
 
-        //public bool ValidateLogin(string email, string password)
+        //private List<Employee> employees = new List<Employee>();
+
+        //public void AddEmployee(Employee employee)
         //{
-        //    var employee = GetEmployeeByEmail(email);
-        //    bool IsValid = employee != null && employee.Password == password;
-        //    if (IsValid)
-        //    {
-        //        SetLoggedInStatus(true);
-        //    }
-        //    return IsValid;
-
-
+        //    employees.Add(employee);
         //}
+
+
     }
 }
