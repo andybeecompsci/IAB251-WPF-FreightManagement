@@ -22,11 +22,12 @@ namespace IAB251_WPF_ASS2
     /// </summary>
     public partial class EmployeeRegistration : Window
     {
-        private EmployeeManager employeeManager = new EmployeeManager();
+        private EmployeeManager employeeManager;
         
-        public EmployeeRegistration()
+        public EmployeeRegistration(EmployeeManager manager)
         {
             InitializeComponent();
+            employeeManager = manager;
         }
 
         private void RegisterButtonClick(object sender, RoutedEventArgs e)

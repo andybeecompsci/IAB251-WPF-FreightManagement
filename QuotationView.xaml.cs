@@ -18,13 +18,14 @@ namespace IAB251_WPF_ASS2
     /// <summary>
     /// Interaction logic for QuotationView.xaml
     /// </summary>
+    /// 
     public partial class QuotationView : Window
     {
         private QuotationManager quotationManager;
-        public QuotationView()
+        public QuotationView(QuotationManager quotationManager)
         {
             InitializeComponent();
-            quotationManager = new QuotationManager();
+            this.quotationManager = quotationManager;
 
             // bind the data to grid
             QuotationGridView.ItemsSource = quotationManager.GetQuotations();

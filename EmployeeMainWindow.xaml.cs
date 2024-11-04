@@ -21,26 +21,35 @@ namespace IAB251_WPF_ASS2
     /// </summary>
     public partial class EmployeeMainWindow : Window
     {
-        private EmployeeManager _employeeManager;
-        private static CustomerManager _customerManager = new CustomerManager(); //delete this 
+        private static EmployeeManager _employeeManager = new EmployeeManager();
+        private QuotationManager _quotationManager = new QuotationManager();
 
 
         public EmployeeMainWindow(EmployeeManager employeeManager)
         {
             InitializeComponent();
             _employeeManager = employeeManager;
+            _quotationManager = new QuotationManager();
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
-            var registerWindow = new CustomerRegistration(_customerManager);
+            var registerWindow = new EmployeeRegistration(_employeeManager);
             registerWindow.Show();
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            var loginWindow = new CustomerLogin(_customerManager);
+            var loginWindow = new EmployeeLogin(_employeeManager);
             loginWindow.Show();
+        }
+
+        private void ViewAllQuotations_Click(object sender, RoutedEventArgs e)
+        {
+            var employeeManager = new EmployeeManager();
+            var quotationManager = new QuotationManager(); // Initialize QuotationManager
+            var quotationviewWindow = new QuotationView(_quotationManager);
+            quotationviewWindow.Show();
         }
     }
 }
