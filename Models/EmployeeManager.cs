@@ -50,7 +50,7 @@ namespace IAB251_ASS2.Models
         private List<Employee> Employees { get; set; } = new List<Employee>();
 
         // Add new customer
-        public void AddCustomer(Employee employee)
+        public void AddEmployee(Employee employee)
         {
             Employees.Add(employee);
         }
