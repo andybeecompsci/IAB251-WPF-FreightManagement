@@ -22,6 +22,8 @@ namespace IAB251_WPF_ASS2
     {
         
         private QuotationManager quotationManager;
+        private QuotationRequest selectedRequest;
+        public double discountPercentage;
         public OfficerRequestView()
         {
             InitializeComponent();
@@ -34,8 +36,41 @@ namespace IAB251_WPF_ASS2
 
         }
 
-        // accept quotation request
-        private void AcceptRequest(object sender, RoutedEventArgs e)
+
+        private void RequestDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (RequestDataGrid.SelectedItem is QuotationRequest request)
+            {
+                selectedRequest = request;
+
+                // Calculate and display discount
+                discountPercentage = quotationManager.CalculateDiscount(request.ContainerQuantity, request.QuarantineDetails, request.FumigationDetails);
+                DiscountTextBox.Text = discountPercentage.ToString("0.##");
+            }
+        }
+
+        private void ApplyDiscountAndAccept_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedRequest != null)
+            {
+                // Display success message
+                Messagetxt.Text = "Discount applied and quotation accepted";
+
+                //apply discount    
+                quotationManager.ApplyDiscount(discountPercentage, selectedRequest.RequestID);
+
+                // Update the request status to accepted
+                quotationManager.AcceptQuotationRequest(selectedRequest.RequestID);
+                RefreshDataGrid();  // Refresh the list of requests
+            }
+            else
+            {
+                Messagetxt.Text = "Select a request to accept";
+            }
+        }
+
+            // accept quotation request
+            private void AcceptRequest(object sender, RoutedEventArgs e)
         {
             if (RequestDataGrid.SelectedItem is QuotationRequest selectedRequest)
             {

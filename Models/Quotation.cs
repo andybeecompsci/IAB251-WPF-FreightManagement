@@ -15,15 +15,18 @@ namespace IAB251_ASS2.Models
         public string Status { get; set; } // must be Accept, Reject or Pending
         public string ContainerType { get; set; }
         public string Scope { get; set; }
-        public decimal Charges { get; set; }
+        //public decimal Charges { get; set; }
         public decimal DepotCharges { get; set; }
         public decimal LCLCharges { get; set; } 
+        //public decimal DiscountedCharges { get; set; }
+
         
 
 
 
 
-        public Quotation (int quotationnumber, string clientname, string clientemail, DateTime dateissue, string status, string containertype, string scope, decimal charges, decimal depotcharges, decimal lclcharges)
+        public Quotation (int quotationnumber, string clientname, string clientemail, 
+            DateTime dateissue, string status, string containertype, string scope, decimal depotcharges, decimal lclcharges)
         {
             QuotationNumber = quotationnumber;
             ClientName = clientname;
@@ -32,9 +35,10 @@ namespace IAB251_ASS2.Models
             Status = status;
             ContainerType = containertype;
             Scope = scope;
-            Charges = charges;
+            //Charges = charges;
             DepotCharges = depotcharges;
             LCLCharges = lclcharges;
+            //DiscountedCharges = discountedcharges;
         }
 
 

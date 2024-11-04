@@ -64,13 +64,17 @@ namespace IAB251_ASS2.Models
                 $"Quarantine Detail: {request.QuarantineDetails}, Fumigation Details: {request.FumigationDetails}";
 
             // figure out charges
-            //decimal baseCharge = containertype == "40" ? 2000m : 1000m;
-            decimal charges =  0;//baseCharge * request.ContainerQuantity;
+            // NEED FUNCTION FROM RATE SCHEDULE I THINK
+            decimal baseCharge = containertype == "40" ? 2000m : 1000m;
+            //decimal charges =  0;//baseCharge * request.ContainerQuantity;
             decimal depotcharges = 0; // Assume a fixed depot charge
             decimal lclcharges = 0; // Assume a fixed LCL delivery charge
 
             // add discount stuff
-
+            // Calculate discount percentage
+            //decimal discountPercentage = CalculateDiscount(request.ContainerQuantity, request.QuarantineDetails, request.FumigationDetails);
+            //decimal discountAmount = charges * (discountPercentage / 100);
+            //decimal discountcharges = charges - discountAmount;
 
             Quotation quotation = new Quotation(
                 quotationnumber,
@@ -80,7 +84,6 @@ namespace IAB251_ASS2.Models
                 status,
                 containertype,
                 scope,
-                charges,
                 depotcharges,
                 lclcharges
             );
@@ -90,7 +93,35 @@ namespace IAB251_ASS2.Models
             return quotation;
         }
 
-        // retreive quotation by number
+        // calculate discount
+        public double CalculateDiscount(int containerquantity, string quarantinedetails, string fumigationdetails)
+        {
+            bool QuarantineRequired = !string.IsNullOrEmpty(quarantinedetails);
+            bool FumigationRequired = !string.IsNullOrEmpty(fumigationdetails);
+
+            if (containerquantity > 10 && QuarantineRequired && FumigationRequired)
+                return 10.0;
+            else if (containerquantity > 5 && QuarantineRequired && FumigationRequired)
+                return 5.0;
+            else if (containerquantity > 5 && (QuarantineRequired || FumigationRequired))
+                return 2.5;
+            else
+                return 0;
+        }
+
+        // apply discount
+        public void ApplyDiscount(double discount, int requestID)
+        {
+            var quotationnumber = quotations.FirstOrDefault(r => r.QuotationNumber == requestID);
+            if (discount > 0)
+            {
+                decimal discountApplied = 1 - ((decimal)discount / 100);
+                quotationnumber.DepotCharges *= discountApplied;
+                quotationnumber.LCLCharges *= discountApplied;
+            }
+        }
+
+        // retreive quotation by number // IS THIS NEEDED
         public Quotation QuotationByNumber(int quotationNumber)
         {
             return quotations.FirstOrDefault(q => q.QuotationNumber == quotationNumber);
@@ -100,9 +131,11 @@ namespace IAB251_ASS2.Models
         public void AcceptQuotationRequest(int requestID)
         {
             var request = quotationRequests.FirstOrDefault(r => r.RequestID == requestID);
+            var quotationnumber = quotations.FirstOrDefault(r => r.QuotationNumber == requestID);
             if (request != null)
             {
                 request.Status = "Accepted";
+                quotationnumber.Status = "Accepted";
             }
         }
 
@@ -110,10 +143,12 @@ namespace IAB251_ASS2.Models
         public void RejectQuotationRequest(int requestID, string message)
         {
             var request = quotationRequests.FirstOrDefault(r => r.RequestID == requestID);
+            var quotationnumber = quotations.FirstOrDefault(r => r.QuotationNumber == requestID);
             if (request != null)
             {
                 request.Status = "Rejected";
-                
+                quotationnumber.Status = "Rejected";
+
                 // add something to send message to customer when they login next
                 //message;
             }
