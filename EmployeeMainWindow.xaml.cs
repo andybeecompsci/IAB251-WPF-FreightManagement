@@ -30,6 +30,7 @@ namespace IAB251_WPF_ASS2
             InitializeComponent();
             _employeeManager = employeeManager;
             _quotationManager = new QuotationManager();
+            DataContext = _employeeManager; // Bind EmployeeManager to the DataContext
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)
