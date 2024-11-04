@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IAB251_ASS2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +19,28 @@ namespace IAB251_WPF_ASS2
     /// <summary>
     /// Interaction logic for EmployeeMainWindow.xaml
     /// </summary>
-    public partial class EmployeeMainWindow : Page
+    public partial class EmployeeMainWindow : Window
     {
-        public EmployeeMainWindow()
+        private EmployeeManager _employeeManager;
+        private static CustomerManager _customerManager = new CustomerManager(); //delete this 
+
+
+        public EmployeeMainWindow(EmployeeManager employeeManager)
         {
             InitializeComponent();
+            _employeeManager = employeeManager;
+        }
+
+        private void Register_Click(object sender, RoutedEventArgs e)
+        {
+            var registerWindow = new CustomerRegistration(_customerManager);
+            registerWindow.Show();
+        }
+
+        private void Login_Click(object sender, RoutedEventArgs e)
+        {
+            var loginWindow = new CustomerLogin(_customerManager);
+            loginWindow.Show();
         }
     }
 }

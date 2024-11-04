@@ -23,6 +23,7 @@ namespace IAB251_WPF_ASS2
         private static CustomerManager _customerManager = new CustomerManager();
         private static EmployeeManager _employeeManager = new EmployeeManager();
         //employee version of this ^^^ goes here
+
         public CustomerOrEmployee()
         {
             _customerManager = new CustomerManager();
@@ -42,7 +43,8 @@ namespace IAB251_WPF_ASS2
 
         private void Employee_Click(object sender, RoutedEventArgs e)
         {
-            var employeeMainWindow = new EmployeeMainWindow(_employeeManager, new QuotationManager());
+            var employeeManager = new EmployeeManager();
+            var employeeMainWindow = new EmployeeMainWindow(employeeManager);
 
             employeeMainWindow.Show();
 
