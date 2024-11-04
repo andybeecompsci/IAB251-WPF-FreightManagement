@@ -29,6 +29,14 @@ namespace IAB251_WPF_ASS2
             DataContext = _customerManager; // Bind CustomerManager to the DataContext
         }
 
+        public MainWindow(CustomerManager customerManager, QuotationManager quotationManager)
+        {
+            InitializeComponent();
+            _customerManager = customerManager;
+            _quotationManager = quotationManager;
+            DataContext = _customerManager;
+        }
+
         private void Register_Click(object sender, RoutedEventArgs e)
         {
             var registerWindow = new CustomerRegistration(_customerManager);

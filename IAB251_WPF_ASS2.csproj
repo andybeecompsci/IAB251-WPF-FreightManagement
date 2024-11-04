@@ -58,6 +58,9 @@
     <Compile Include="CustomerLogin.xaml.cs">
       <DependentUpon>CustomerLogin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomerOrEmployee.xaml.cs">
+      <DependentUpon>CustomerOrEmployee.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomerRegistration.xaml.cs">
       <DependentUpon>CustomerRegistration.xaml</DependentUpon>
     </Compile>
@@ -81,6 +84,10 @@
       <DependentUpon>RateSchedule.xaml</DependentUpon>
     </Compile>
     <Page Include="CustomerLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomerOrEmployee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
