@@ -7,8 +7,15 @@
         mc:Ignorable="d"
         Title="CustomerOrEmployee" Height="450" Width="800">
     <Grid>
+        <TextBlock Text="Welcome to InterPort Cargo!"
+                   TextAlignment="Center"
+                    FontSize="24"
+                    FontWeight="Bold"
+                    Foreground="Black"
+                    Margin="216,24,216,348"/>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="Customer or Employee?"
+                       TextAlignment="Center"
            FontSize="24"
            FontWeight="Bold"
            Foreground="Black"
