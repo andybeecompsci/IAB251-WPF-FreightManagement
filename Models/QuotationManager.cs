@@ -62,7 +62,7 @@ namespace IAB251_ASS2.Models
             string containertype = request.Width;
             string scope = $"Container Quantity: {request.ContainerQuantity}Goods Type: {request.GoodsType}, Port Type: {request.PortType}, Packing Type: {request.PackingType}, " +
                 $"Quarantine Detail: {request.QuarantineDetails}, Fumigation Details: {request.FumigationDetails}";
-
+            string message = "";
             // figure out charges
             // NEED FUNCTION FROM RATE SCHEDULE I THINK
             //decimal charges =  0;//baseCharge * request.ContainerQuantity;
@@ -79,7 +79,8 @@ namespace IAB251_ASS2.Models
                 containertype,
                 scope,
                 depotcharges,
-                lclcharges
+                lclcharges, 
+                message
             );
 
             // Add quotation to list
@@ -142,9 +143,10 @@ namespace IAB251_ASS2.Models
             {
                 request.Status = "Rejected";
                 quotationnumber.Status = "Rejected";
-
+                quotationnumber.Message = message;
                 // add something to send message to customer when they login next
                 //message;
+
             }
         }
     }

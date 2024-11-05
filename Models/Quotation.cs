@@ -18,6 +18,7 @@ namespace IAB251_ASS2.Models
         //public decimal Charges { get; set; }
         public decimal DepotCharges { get; set; }
         public decimal LCLCharges { get; set; } 
+        public string Message { get; set; }
         //public decimal DiscountedCharges { get; set; }
 
         
@@ -26,7 +27,7 @@ namespace IAB251_ASS2.Models
 
 
         public Quotation (int quotationnumber, string clientname, string clientemail, 
-            DateTime dateissue, string status, string containertype, string scope, decimal depotcharges, decimal lclcharges)
+            DateTime dateissue, string status, string containertype, string scope, decimal depotcharges, decimal lclcharges, string message)
         {
             QuotationNumber = quotationnumber;
             ClientName = clientname;
@@ -38,6 +39,7 @@ namespace IAB251_ASS2.Models
             //Charges = charges;
             DepotCharges = depotcharges;
             LCLCharges = lclcharges;
+            Message = message;
             //DiscountedCharges = discountedcharges;
         }
 
