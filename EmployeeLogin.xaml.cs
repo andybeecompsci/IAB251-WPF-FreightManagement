@@ -40,7 +40,11 @@ namespace IAB251_WPF_ASS2
             if (isLoggedIn)
             {
                 Messagetxt.Text = "Login successful!";
-                // Navigate to another window or perform other actions on successful login
+                var employeeMainWindow = new EmployeeMainWindow(employeeManager);
+
+                //navigate to page
+                var mainwindow = (NewMainWindow)Application.Current.MainWindow;
+                mainwindow.NavigateToPage(employeeMainWindow);
             }
             else
             {

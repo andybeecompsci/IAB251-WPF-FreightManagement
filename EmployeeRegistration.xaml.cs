@@ -65,6 +65,12 @@ namespace IAB251_WPF_ASS2
             // Clear the form and display a success message
             ClearForm();
             Messagetxt.Text = "Registration successful!";
+
+            var employeeMainWindow = new EmployeeMainWindow(employeeManager);
+
+            //navigate to page
+            var mainwindow = (NewMainWindow)Application.Current.MainWindow;
+            mainwindow.NavigateToPage(employeeMainWindow);
         }
         private void ClearForm()
         {
