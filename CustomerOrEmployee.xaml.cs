@@ -36,9 +36,11 @@ namespace IAB251_WPF_ASS2
 
         private void Customer_Click(object sender, RoutedEventArgs e)
         {
-            var mainWindow = new MainWindow(_customerManager, new QuotationManager());
-            mainWindow.Show();
-            //this.Close();
+            var customermainWindow = new MainWindow(_customerManager, new QuotationManager());
+
+            //navigate to page
+            var mainwindow = (NewMainWindow)Application.Current.MainWindow;
+            mainwindow.NavigateToPage(customermainWindow);
         }
 
         private void Employee_Click(object sender, RoutedEventArgs e)

@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 
 namespace IAB251_WPF_ASS2
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : Page
     {
         private static CustomerManager _customerManager = new CustomerManager();
         private QuotationManager _quotationManager = new QuotationManager(); 
@@ -40,13 +40,19 @@ namespace IAB251_WPF_ASS2
         private void Register_Click(object sender, RoutedEventArgs e)
         {
             var registerWindow = new CustomerRegistration(_customerManager);
-            registerWindow.Show();
+
+            //navigate to page
+            var mainwindow = (NewMainWindow)Application.Current.MainWindow;
+            mainwindow.NavigateToPage(registerWindow);
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
             var loginWindow = new CustomerLogin(_customerManager);
-            loginWindow.Show();
+
+            //navigate to page
+            var mainwindow = (NewMainWindow)Application.Current.MainWindow;
+            mainwindow.NavigateToPage(loginWindow);
         }
 
         private void RequestQuotation_Click(object sender, RoutedEventArgs e)
@@ -54,7 +60,10 @@ namespace IAB251_WPF_ASS2
             var customerManager = new CustomerManager(); 
             var quotationManager = new QuotationManager(); // Initialize QuotationManager
             var requestWindow = new QuotationRequestWindow(_customerManager, _quotationManager);
-            requestWindow.Show();
+           
+            //navigate to page
+            var mainwindow = (NewMainWindow)Application.Current.MainWindow;
+            mainwindow.NavigateToPage(requestWindow);
         }
 
         

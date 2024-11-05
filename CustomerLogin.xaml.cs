@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 
 namespace IAB251_WPF_ASS2
 {
-    public partial class CustomerLogin : Window
+    public partial class CustomerLogin : Page
     {
         private CustomerManager customerManager;
 

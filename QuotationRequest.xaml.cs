@@ -5,7 +5,7 @@ using System.Windows.Controls;
 
 namespace IAB251_WPF_ASS2
 {
-    public partial class QuotationRequestWindow : Window
+    public partial class QuotationRequestWindow : Page
     {
         private readonly CustomerManager customerManager;
         private readonly QuotationManager quotationManager;

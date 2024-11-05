@@ -19,7 +19,7 @@ namespace IAB251_WPF_ASS2
     /// <summary>
     /// Interaction logic for CustomerRegistration.xaml
     /// </summary>
-    public partial class CustomerRegistration : Window
+    public partial class CustomerRegistration : Page
     {
         private CustomerManager customerManager;
 

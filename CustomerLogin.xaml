@@ -1,4 +1,4 @@
-﻿<Window x:Class="IAB251_WPF_ASS2.CustomerLogin"
+﻿<Page x:Class="IAB251_WPF_ASS2.CustomerLogin"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Customer Login" Height="450" Width="800">
@@ -14,5 +14,5 @@
             <TextBlock x:Name="Messagetxt" Foreground="Red" Margin="0,10,0,0"/>
         </StackPanel>
     </Grid>
-</Window>
+</Page>
 
