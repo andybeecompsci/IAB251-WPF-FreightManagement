@@ -22,16 +22,24 @@ namespace IAB251_WPF_ASS2
     public partial class QuotationView : Window
     {
         private QuotationManager quotationManager;
-        public QuotationView(QuotationManager quotationManager)
+        private EmployeeManager employeeManager;
+        public QuotationView(QuotationManager quotationManager, EmployeeManager employeeManager)
         {
             InitializeComponent();
             this.quotationManager = quotationManager;
+            this.employeeManager = employeeManager; 
 
             // bind the data to grid
             QuotationGridView.ItemsSource = quotationManager.GetQuotations();
 
             // add something to load sample data maybe?
 
+        }
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            var employeeMainWindow = new EmployeeMainWindow(employeeManager);
+            employeeMainWindow.Show();
+            this.Close();
         }
 
         // button for loading quotations

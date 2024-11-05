@@ -23,11 +23,13 @@ namespace IAB251_WPF_ASS2
         
         private QuotationManager quotationManager;
         private QuotationRequest selectedRequest;
+        private EmployeeManager employeeManager;
         public double discountPercentage;
-        public OfficerRequestView(QuotationManager quotationManager)
+        public OfficerRequestView(QuotationManager quotationManager, EmployeeManager employeeManager)
         {
             InitializeComponent();
             this.quotationManager = quotationManager;
+            this.employeeManager = employeeManager;
 
             // bind quotation requests to grid
             RequestDataGrid.ItemsSource = quotationManager.GetPendingRequests();
@@ -106,7 +108,12 @@ namespace IAB251_WPF_ASS2
             }
         }
 
-
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            var employeeMainWindow = new EmployeeMainWindow(employeeManager);
+            employeeMainWindow.Show();
+            this.Close();
+        }
         // refresh grid view
         private void RefreshDataGrid()
         {

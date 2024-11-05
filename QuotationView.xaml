@@ -23,6 +23,7 @@
                 </DataGrid.Columns>
             </DataGrid>
             <Button Content="Load Quotations" Click="LoadQuotations" Margin="0,10,0,0"/>
+            <Button Content="Back" Width="100" Click="BackButton_Click" HorizontalAlignment="Left" Margin="0,0,0,10"/>
         </StackPanel>
     </Grid>
 </Window>

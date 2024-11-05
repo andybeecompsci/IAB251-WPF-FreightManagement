@@ -49,7 +49,7 @@ namespace IAB251_WPF_ASS2
         {
             var employeeManager = new EmployeeManager();
             var quotationManager = new QuotationManager(); // Initialize QuotationManager
-            var quotationviewWindow = new QuotationView(_quotationManager);
+            var quotationviewWindow = new QuotationView(_quotationManager, _employeeManager);
             quotationviewWindow.Show();
         }
 
@@ -65,7 +65,7 @@ namespace IAB251_WPF_ASS2
         {
             var employeeManager = new EmployeeManager();
             var quotationManager = new QuotationManager(); // Initialize QuotationManager
-            var requestviewWindow = new OfficerRequestView(_quotationManager);
+            var requestviewWindow = new OfficerRequestView(_quotationManager, _employeeManager);
             requestviewWindow.Show();
         }
     }
