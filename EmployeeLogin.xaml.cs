@@ -18,7 +18,7 @@ namespace IAB251_WPF_ASS2
     /// <summary>
     /// Interaction logic for EmployeeLogin.xaml
     /// </summary>
-    public partial class EmployeeLogin : Window
+    public partial class EmployeeLogin : Page
     {
         private EmployeeManager employeeManager;
         public EmployeeLogin(EmployeeManager manager)

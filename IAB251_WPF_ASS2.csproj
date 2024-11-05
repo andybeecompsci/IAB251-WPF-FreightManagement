@@ -71,6 +71,9 @@
       <DependentUpon>EmployeeMainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\BoolClass.cs" />
+    <Compile Include="NewMainWindow.xaml.cs">
+      <DependentUpon>NewMainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="OfficerRequestView.xaml.cs">
       <DependentUpon>OfficerRequestView.xaml</DependentUpon>
     </Compile>
@@ -122,6 +125,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NewMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="OfficerRequestView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

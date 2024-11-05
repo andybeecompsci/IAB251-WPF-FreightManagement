@@ -1,4 +1,4 @@
-﻿<Window x:Class="IAB251_WPF_ASS2.EmployeeMainWindow"
+﻿<Page x:Class="IAB251_WPF_ASS2.EmployeeMainWindow"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -29,4 +29,4 @@
                     Visibility="{Binding IsLoggedIn, Converter={StaticResource BoolToVisibilityConverter}}"/>
         </StackPanel>
     </Grid>
-</Window>
+</Page>

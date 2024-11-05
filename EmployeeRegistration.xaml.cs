@@ -20,7 +20,7 @@ namespace IAB251_WPF_ASS2
     /// <summary>
     /// Interaction logic for EmployeeRegistration.xaml
     /// </summary>
-    public partial class EmployeeRegistration : Window
+    public partial class EmployeeRegistration : Page
     {
         private EmployeeManager employeeManager;
         

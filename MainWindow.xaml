@@ -4,11 +4,8 @@
         Title="Interport Cargo" Height="450" Width="800
         "
        Background="White">
-    
+
     <Grid>
-        <Grid>
-            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
-        </Grid>
         <TextBlock
             TextAlignment="Center"
             FontSize="24"

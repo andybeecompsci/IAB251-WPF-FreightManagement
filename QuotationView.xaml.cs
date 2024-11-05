@@ -19,7 +19,7 @@ namespace IAB251_WPF_ASS2
     /// Interaction logic for QuotationView.xaml
     /// </summary>
     /// 
-    public partial class QuotationView : Window
+    public partial class QuotationView : Page
     {
         private QuotationManager quotationManager;
         private EmployeeManager employeeManager;
@@ -38,8 +38,10 @@ namespace IAB251_WPF_ASS2
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             var employeeMainWindow = new EmployeeMainWindow(employeeManager);
-            employeeMainWindow.Show();
-            this.Close();
+
+            //navigate to page
+            var mainwindow = (NewMainWindow)Application.Current.MainWindow;
+            mainwindow.NavigateToPage(employeeMainWindow);
         }
 
         // button for loading quotations

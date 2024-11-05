@@ -18,7 +18,7 @@ namespace IAB251_WPF_ASS2
     /// <summary>
     /// Interaction logic for OfficerRequestView.xaml
     /// </summary>
-    public partial class OfficerRequestView : Window
+    public partial class OfficerRequestView : Page
     {
         
         private QuotationManager quotationManager;
@@ -111,8 +111,10 @@ namespace IAB251_WPF_ASS2
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             var employeeMainWindow = new EmployeeMainWindow(employeeManager);
-            employeeMainWindow.Show();
-            this.Close();
+            
+            //navigate to page
+            var mainwindow = (NewMainWindow)Application.Current.MainWindow;
+            mainwindow.NavigateToPage(employeeMainWindow);
         }
         // refresh grid view
         private void RefreshDataGrid()

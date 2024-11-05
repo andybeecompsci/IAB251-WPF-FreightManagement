@@ -18,7 +18,7 @@ namespace IAB251_WPF_ASS2
     /// <summary>
     /// Interaction logic for CustomerOrEmployee.xaml
     /// </summary>
-    public partial class CustomerOrEmployee : Window
+    public partial class CustomerOrEmployee : Page
     {
         private static CustomerManager _customerManager = new CustomerManager();
         private static EmployeeManager _employeeManager = new EmployeeManager();
@@ -38,7 +38,7 @@ namespace IAB251_WPF_ASS2
         {
             var mainWindow = new MainWindow(_customerManager, new QuotationManager());
             mainWindow.Show();
-            this.Close();
+            //this.Close();
         }
 
         private void Employee_Click(object sender, RoutedEventArgs e)
@@ -46,7 +46,10 @@ namespace IAB251_WPF_ASS2
             var employeeManager = new EmployeeManager();
             var employeeMainWindow = new EmployeeMainWindow(employeeManager);
 
-            employeeMainWindow.Show();
+            //navigate to page
+            var mainwindow = (NewMainWindow)Application.Current.MainWindow;
+            mainwindow.NavigateToPage(employeeMainWindow);
+
 
         }
     }

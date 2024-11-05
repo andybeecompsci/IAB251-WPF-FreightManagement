@@ -1,4 +1,4 @@
-﻿<Window x:Class="IAB251_WPF_ASS2.EmployeeRegistration"
+﻿<Page x:Class="IAB251_WPF_ASS2.EmployeeRegistration"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -40,4 +40,4 @@
             <TextBlock x:Name="Messagetxt" Foreground="Red" Margin="0,10,0,0"/>
         </StackPanel>
     </Grid>
-</Window>
+</Page>
