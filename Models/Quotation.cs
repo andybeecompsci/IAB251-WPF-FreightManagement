@@ -43,7 +43,5 @@ namespace IAB251_ASS2.Models
             //DiscountedCharges = discountedcharges;
         }
 
-
-
     }
 }
