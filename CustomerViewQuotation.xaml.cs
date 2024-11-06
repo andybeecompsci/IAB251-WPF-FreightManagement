@@ -64,10 +64,11 @@ namespace IAB251_WPF_ASS2
         // Handle Back button click to navigate back to the previous customer page
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            if (NavigationService != null && NavigationService.CanGoBack)
-            {
-                NavigationService.GoBack();
-            }
+            var customerMainWindow = new MainWindow(App.CustomerManager, App.QuotationManager);
+
+            //navigate to page
+            var mainwindow = (NewMainWindow)Application.Current.MainWindow;
+            mainwindow.NavigateToPage(customerMainWindow);
         }
     }
 }

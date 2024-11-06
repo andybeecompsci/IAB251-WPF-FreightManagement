@@ -130,5 +130,14 @@ namespace IAB251_WPF_ASS2
             // Implement a method to generate unique Request IDs
             return new Random().Next(1, 1000);
         }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            var customerMainWindow = new MainWindow(App.CustomerManager, App.QuotationManager);
+
+            //navigate to page
+            var mainwindow = (NewMainWindow)Application.Current.MainWindow;
+            mainwindow.NavigateToPage(customerMainWindow);
+        }
     }
 }
