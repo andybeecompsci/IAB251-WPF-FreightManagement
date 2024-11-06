@@ -21,16 +21,16 @@ namespace IAB251_WPF_ASS2
     public partial class OfficerRequestView : Page
     {
         
-        private QuotationManager quotationManager;
+        private QuotationManager _quotationManager;
+        private EmployeeManager _employeeManager;
         private QuotationRequest selectedRequest;
-        private EmployeeManager employeeManager;
         //private Quotation 
         public double discountPercentage;
         public OfficerRequestView(QuotationManager quotationManager, EmployeeManager employeeManager)
         {
             InitializeComponent();
-            this.quotationManager = quotationManager;
-            this.employeeManager = employeeManager;
+            _quotationManager = App.QuotationManager;
+            _employeeManager = App.EmployeeManager;
 
             // Bind pending requests to DataGrid
             var pendingRequests = App.QuotationManager.GetPendingRequests(); // NEW OR UPDATED
@@ -122,7 +122,7 @@ namespace IAB251_WPF_ASS2
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            var employeeMainWindow = new EmployeeMainWindow(employeeManager);
+            var employeeMainWindow = new EmployeeMainWindow(_employeeManager);
             
             //navigate to page
             var mainwindow = (NewMainWindow)Application.Current.MainWindow;

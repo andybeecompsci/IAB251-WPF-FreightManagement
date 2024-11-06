@@ -24,7 +24,7 @@ namespace IAB251_WPF_ASS2
         public EmployeeLogin(EmployeeManager manager)
         {
             InitializeComponent();
-            employeeManager = manager;
+            employeeManager = App.EmployeeManager;
         }
 
         private void LoginButtonClick(object sender, RoutedEventArgs e)

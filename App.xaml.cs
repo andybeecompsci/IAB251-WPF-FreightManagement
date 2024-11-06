@@ -28,6 +28,10 @@ namespace IAB251_WPF_ASS2
         private static QuotationManager _quotationManager = new QuotationManager();
         public static QuotationManager QuotationManager => _quotationManager;
 
+        //single instantiation of employee manager
+        private static EmployeeManager _employeeManager = new EmployeeManager();
+        public static EmployeeManager EmployeeManager => _employeeManager;
+
 
 
     }

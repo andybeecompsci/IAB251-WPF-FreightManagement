@@ -21,22 +21,21 @@ namespace IAB251_WPF_ASS2
     /// </summary>
     public partial class EmployeeMainWindow : Page
     {
-        private static EmployeeManager _employeeManager = new EmployeeManager();
-        private QuotationManager _quotationManager = new QuotationManager();
+        private EmployeeManager _employeeManager;
+        private QuotationManager _quotationManager;
 
-        //testing
 
-        private void LogoutButton(object sender, RoutedEventArgs e)
-        {
-            _employeeManager.Logout();
-        }
 
         public EmployeeMainWindow(EmployeeManager employeeManager)
         {
             InitializeComponent();
-            _employeeManager = employeeManager;
-            _quotationManager = new QuotationManager();
-            DataContext = _employeeManager; // Bind EmployeeManager to the DataContexts
+            _employeeManager = App.EmployeeManager;
+            _quotationManager = App.QuotationManager;
+            DataContext = App.EmployeeManager; // Bind EmployeeManager to the DataContexts
+        }
+        private void LogoutButton(object sender, RoutedEventArgs e)
+        {
+            _employeeManager.Logout();
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)
@@ -59,8 +58,8 @@ namespace IAB251_WPF_ASS2
 
         private void ViewAllQuotations_Click(object sender, RoutedEventArgs e)
         {
-            var employeeManager = new EmployeeManager();
-            var quotationManager = new QuotationManager(); // Initialize QuotationManager
+            //var employeeManager = new EmployeeManager();
+            //var quotationManager = new QuotationManager(); // Initialize QuotationManager
             var quotationviewWindow = new QuotationView(_quotationManager, _employeeManager);
 
             //navigate to page
@@ -70,20 +69,20 @@ namespace IAB251_WPF_ASS2
 
         private void ViewRateSchedule_Click(object sender, RoutedEventArgs e) // update once jake has pushed
         {
-            var employeeManager = new EmployeeManager();
-            var quotationManager = new QuotationManager(); // Initialize QuotationManager
-            //var ratescheduleviewWindow = new RateSchedule();
-      
+            //var employeeManager = new EmployeeManager();
+            //var quotationManager = new QuotationManager(); // Initialize QuotationManager
+            var ratescheduleviewWindow = new RateSchedule(_quotationManager, _employeeManager);
+
 
             //navigate to page
             var mainwindow = (NewMainWindow)Application.Current.MainWindow;
-            //mainwindow.NavigateToPage(ratescheduleviewWindow);
+            mainwindow.NavigateToPage(ratescheduleviewWindow);
         }
 
         private void PrepareQuotations_Click(object sender, RoutedEventArgs e)
         {
-            var employeeManager = new EmployeeManager();
-            var quotationManager = new QuotationManager(); // Initialize QuotationManager
+            //var employeeManager = new EmployeeManager();
+            //var quotationManager = new QuotationManager(); // Initialize QuotationManager
             var requestviewWindow = new OfficerRequestView(_quotationManager, _employeeManager);
 
             //navigate to page

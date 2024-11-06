@@ -28,6 +28,7 @@ namespace IAB251_WPF_ASS2
         {
             InitializeComponent();
             customerManager = App.CustomerManager;
+            quotationManager = App.QuotationManager;    
         }
 
         private void RegisterButtonClick(object sender, RoutedEventArgs e)
