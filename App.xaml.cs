@@ -21,5 +21,9 @@ namespace IAB251_WPF_ASS2
 
         public static CustomerManager CustomerManager => _customerManager;
 
+        //single instantiation of quotation manager
+        private static QuotationManager _quotationManager = new QuotationManager();
+        public static QuotationManager QuotationManager => _quotationManager;
+
     }
 }
