@@ -22,7 +22,9 @@ namespace IAB251_WPF_ASS2
     {
         private static CustomerManager _customerManager = new CustomerManager();
         private static EmployeeManager _employeeManager = new EmployeeManager();
-        //employee version of this ^^^ goes here
+        //employee version of this ^^^ goes here\
+
+
 
         public CustomerOrEmployee()
         {

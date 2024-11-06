@@ -56,7 +56,7 @@ namespace IAB251_ASS2.Models
 
             int quotationnumber = request.RequestID;
             string clientname = $"{request.CustomerInfo.FirstName} {request.CustomerInfo.LastName}";
-            string clientemail = $"{request.CustomerInfo.EmailAddress}";
+            string clientemail = request.CustomerInfo.EmailAddress;
             DateTime dateissue = DateTime.Now;
             string status = request.Status;
             string containertype = request.Width;
