@@ -9,7 +9,7 @@
     <Grid>
         <StackPanel Margin="10">
             <TextBlock Text="Pending Quotation Requests" FontSize="16" Margin="0,0,0,10"/>
-            <DataGrid x:Name="RequestDataGrid" AutoGenerateColumns="False" Height="250">
+            <DataGrid x:Name="RequestDataGrid" AutoGenerateColumns="False" Height="250" SelectionChanged="RequestDataGrid_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Request ID" Binding="{Binding RequestID}" Width="*"/>
                     <DataGridTextColumn Header="Client Name" Binding="{Binding ClientName}" Width="*"/>
