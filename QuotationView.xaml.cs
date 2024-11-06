@@ -26,7 +26,7 @@ namespace IAB251_WPF_ASS2
         public QuotationView(QuotationManager quotationManager, EmployeeManager employeeManager)
         {
             InitializeComponent();
-            this.quotationManager = quotationManager;
+            this.quotationManager = App.QuotationManager;
             this.employeeManager = employeeManager; 
 
             // bind the data to grid

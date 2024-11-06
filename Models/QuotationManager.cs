@@ -16,6 +16,10 @@ namespace IAB251_ASS2.Models
         public void AddQuotationRequest(QuotationRequest qRequest) //needs to be fleshed out 
         {
             quotationRequests.Add(qRequest);
+
+            //debug
+            Console.WriteLine("Quotation Request added to manager:");
+            Console.WriteLine($"RequestID: {qRequest.RequestID}, Status: {qRequest.Status}, Customer: {qRequest.CustomerInfo?.FirstName} {qRequest.CustomerInfo?.LastName}");
         }
 
         //retrive quotation request by ID
@@ -35,7 +39,9 @@ namespace IAB251_ASS2.Models
         //make list of pending quotations 
         public List<QuotationRequest> GetPendingRequests()
         {
-            return quotationRequests.Where(r => r.Status == "Pending").ToList();
+            var pendingRequests = quotationRequests.Where(r => r.Status == "Pending").ToList();
+            Console.WriteLine($"Retrieved Pending Requests: Pending requests count: {pendingRequests.Count}");
+            return pendingRequests;
         }
 
         private List<Quotation> quotations = new List<Quotation>();

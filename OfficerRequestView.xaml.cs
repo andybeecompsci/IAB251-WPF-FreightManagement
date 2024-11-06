@@ -32,10 +32,14 @@ namespace IAB251_WPF_ASS2
             this.quotationManager = quotationManager;
             this.employeeManager = employeeManager;
 
-            // bind quotation requests to grid
-            RequestDataGrid.ItemsSource = quotationManager.GetPendingRequests();
-
-            // maybe load example data ??
+            // Bind pending requests to DataGrid
+            var pendingRequests = App.QuotationManager.GetPendingRequests(); // NEW OR UPDATED
+            Console.WriteLine($"Pending requests count: {pendingRequests.Count}"); // NEW OR UPDATED
+            foreach (var req in pendingRequests) // NEW OR UPDATED
+            {
+                Console.WriteLine($"RequestID: {req.RequestID}, Client: {req.ClientName}, Status: {req.Status}"); // NEW OR UPDATED
+            }
+            RequestDataGrid.ItemsSource = pendingRequests; // NEW OR UPDATED
 
         }
 
@@ -46,7 +50,7 @@ namespace IAB251_WPF_ASS2
             {
                 selectedRequest = request;
 
-                var currentquotation = quotationManager.QuotationByNumber(selectedRequest.RequestID);
+                var currentquotation = App.QuotationManager.QuotationByNumber(selectedRequest.RequestID);
                 
                 //display charges
 
@@ -54,7 +58,7 @@ namespace IAB251_WPF_ASS2
                 LCLChargesAmount.Text = currentquotation.LCLCharges.ToString("C");
                 TotalChargesAmount.Text = (currentquotation.DepotCharges+ currentquotation.LCLCharges).ToString("C");
                 // Calculate and display discount
-                discountPercentage = quotationManager.CalculateDiscount(request.ContainerQuantity, request.QuarantineDetails, request.FumigationDetails);
+                discountPercentage = App.QuotationManager.CalculateDiscount(request.ContainerQuantity, request.QuarantineDetails, request.FumigationDetails);
                 DiscountAmount.Text = discountPercentage.ToString("0.##");
             }
         }
@@ -67,10 +71,10 @@ namespace IAB251_WPF_ASS2
                 Messagetxt.Text = "Discount applied and quotation accepted";
 
                 //apply discount    
-                quotationManager.ApplyDiscount(discountPercentage, selectedRequest.RequestID);
+                App.QuotationManager.ApplyDiscount(discountPercentage, selectedRequest.RequestID);
 
                 // Update the request status to accepted
-                quotationManager.AcceptQuotationRequest(selectedRequest.RequestID);
+                App.QuotationManager.AcceptQuotationRequest(selectedRequest.RequestID);
                 RefreshDataGrid();  // Refresh the list of requests
             }
             else
@@ -84,7 +88,7 @@ namespace IAB251_WPF_ASS2
         {
             if (RequestDataGrid.SelectedItem is QuotationRequest selectedRequest)
             {
-                quotationManager.AcceptQuotationRequest(selectedRequest.RequestID);
+                App.QuotationManager.AcceptQuotationRequest(selectedRequest.RequestID);
                 RefreshDataGrid();
                 Messagetxt.Text = "Request accepted";
             }
@@ -105,7 +109,7 @@ namespace IAB251_WPF_ASS2
                     Messagetxt.Text = "Enter a rejection message";
                     return;
                 }
-                quotationManager.RejectQuotationRequest(selectedRequest.RequestID, message);
+                App.QuotationManager.RejectQuotationRequest(selectedRequest.RequestID, message);
                 RefreshDataGrid();
                 Messagetxt.Text = "Request rejected";
                 rejectMessagetxt.Clear();
@@ -128,7 +132,7 @@ namespace IAB251_WPF_ASS2
         private void RefreshDataGrid()
         {
             RequestDataGrid.ItemsSource = null;
-            RequestDataGrid.ItemsSource = quotationManager.GetPendingRequests();
+            RequestDataGrid.ItemsSource = App.QuotationManager.GetPendingRequests();
         }
     }
 }

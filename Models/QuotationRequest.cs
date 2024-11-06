@@ -10,26 +10,7 @@ namespace IAB251_ASS2.Models
 {
     public class QuotationRequest
     {
-        //i2
-        ////[Required(ErrorMessage = "required")]
         
-        //public int RequestID { get; set; } //LOWKEY NEEDS TO BE GENERATED, NO FORM NEEDED
-        //[Required(ErrorMessage = "required")]
-        //public Customer CustomerInfo { get; set; } // LINK THIS W LOG IN DATA FOR FIRST AND LAST NAME
-        //[Required(ErrorMessage = "required")]
-        //public string Source { get; set; }
-        //[Required(ErrorMessage = "required")]
-        //public string Destination { get; set; }
-        //[Required(ErrorMessage = "required")]
-        //public int ContainerQuantity { get; set; }
-        //[Required(ErrorMessage = "required")]
-        //public string NaturePackage { get; set; } // ??????????????????????
-        //[Required(ErrorMessage = "required")]
-        //public List<string> NatureJob { get; set; } = new List<string>(); //holding import/export, packing/unpacking, quarantine info NEED TO BE DONE
-
-        // COMMENTED OUT ABOVE TO MAKE IT MORE COMPATIBLE - TALK TO SULLY ABOUT CHANGES
-        
-        //quotation request
 
         //info
         public int RequestID { get; set; } 
@@ -57,6 +38,11 @@ namespace IAB251_ASS2.Models
         //message
         public string Message { get; set; } = string.Empty;
 
+        // New Properties to match DataGrid bindings in OfficerRequestView
+        public string ClientName => $"{CustomerInfo?.FirstName} {CustomerInfo?.LastName}";
+        public string ClientEmail => CustomerInfo?.EmailAddress;
+        public int NumberOfContainers => ContainerQuantity;
+        public string NatureJobDescription => $"{PortType}, {PackingType}, {QuarantineDetails}, {FumigationDetails}";
 
         public QuotationRequest() { } //paramaterless constructor to avoid errorrs
 

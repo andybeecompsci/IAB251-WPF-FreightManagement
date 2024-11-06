@@ -16,7 +16,7 @@ namespace IAB251_WPF_ASS2
         {
             InitializeComponent();
             this.customerManager = customerManager;
-            this.quotationManager = quotationManager;
+            this.quotationManager = App.QuotationManager;
         }
 
         private void SubmitRequest_Click(object sender, RoutedEventArgs e)
@@ -97,6 +97,8 @@ namespace IAB251_WPF_ASS2
 
             // Add to quotation manager
             quotationManager.AddQuotationRequest(request);
+            Console.WriteLine($"Quotation Request added: RequestID: {request.RequestID}, Status: {request.Status}");
+
 
             // tranform quotation request to quotation
             quotationManager.RequestToQuotation(request);
