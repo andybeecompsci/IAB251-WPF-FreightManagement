@@ -64,10 +64,14 @@ namespace IAB251_WPF_ASS2
 
         private void ViewRateSchedule_Click(object sender, RoutedEventArgs e) // update once jake has pushed
         {
-            //var employeeManager = new EmployeeManager();
-            //var quotationManager = new QuotationManager(); // Initialize QuotationManager
+            var employeeManager = new EmployeeManager();
+            var quotationManager = new QuotationManager(); // Initialize QuotationManager
             var ratescheduleviewWindow = new RateSchedule();
-            //ratescheduleviewWindow.Show();
+      
+
+            //navigate to page
+            var mainwindow = (NewMainWindow)Application.Current.MainWindow;
+            mainwindow.NavigateToPage(ratescheduleviewWindow);
         }
 
         private void PrepareQuotations_Click(object sender, RoutedEventArgs e)

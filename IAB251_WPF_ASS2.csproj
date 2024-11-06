@@ -154,7 +154,6 @@
     <Compile Include="Models\Quotation.cs" />
     <Compile Include="Models\QuotationManager.cs" />
     <Compile Include="Models\QuotationRequest.cs" />
-    <Compile Include="Models\RateSchedule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
