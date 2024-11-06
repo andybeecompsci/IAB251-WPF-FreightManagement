@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IAB251_WPF_ASS2;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -54,21 +55,28 @@ namespace IAB251_ASS2.Models
 
         public Quotation RequestToQuotation(QuotationRequest request)
         {
+            decimal lclCharges = RateSchedule.Rates
+                .FirstOrDefault(r => r.Type == "LCL Delivery Depot" && r.Type == request.Width + "ft")?
+                .GetFeeByContainerSize(request.Width) ?? 0;
+
+
+            decimal depotCharges = RateSchedule.Rates
+                .Where(r => r.Type != "LCL Delivery Depot" && r.Type != "GST")
+                .Sum(r => decimal.Parse(request.Width == "20ft" ? r.TwentyFtFee.Trim('$') : r.FortyFtFee.Trim('$')));
 
             int quotationnumber = request.RequestID;
             string clientname = $"{request.CustomerInfo.FirstName} {request.CustomerInfo.LastName}";
-            string clientemail = $"{request.CustomerInfo.EmailAddress}";
+            string clientemail = request.CustomerInfo.EmailAddress;
             DateTime dateissue = DateTime.Now;
             string status = request.Status;
             string containertype = request.Width;
             string scope = $"Container Quantity: {request.ContainerQuantity}Goods Type: {request.GoodsType}, Port Type: {request.PortType}, Packing Type: {request.PackingType}, " +
                 $"Quarantine Detail: {request.QuarantineDetails}, Fumigation Details: {request.FumigationDetails}";
             string message = "";
-            // figure out charges
-            // NEED FUNCTION FROM RATE SCHEDULE I THINK
-            //decimal charges =  0;//baseCharge * request.ContainerQuantity;
-            decimal depotcharges = 0; // Assume a fixed depot charge
-            decimal lclcharges = 0; // Assume a fixed LCL delivery charge
+
+
+            decimal gstAmount = depotCharges * 0.10m;  // 10% GST on depot charges
+
 
 
             Quotation quotation = new Quotation(
@@ -79,8 +87,8 @@ namespace IAB251_ASS2.Models
                 status,
                 containertype,
                 scope,
-                depotcharges,
-                lclcharges,
+                depotCharges,
+                lclCharges,
                 message
             );
 
@@ -215,6 +223,16 @@ namespace IAB251_ASS2.Models
                     "Quotation accepted by customer"
                 )
             });
+        }
+    }
+
+    public static class RateExtension
+    {
+        public static decimal GetFeeByContainerSize(this Rate rate, string containerSize)
+        {
+            // Check if containerSize is "20ft" and select the appropriate fee
+            string feeString = containerSize == "20ft" ? rate.TwentyFtFee : rate.FortyFtFee;
+            return decimal.Parse(feeString.Trim('$'));  // Remove '$' and parse to decimal
         }
     }
 }

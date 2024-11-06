@@ -1,18 +1,7 @@
 ﻿using IAB251_ASS2.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace IAB251_WPF_ASS2
 {
@@ -21,15 +10,8 @@ namespace IAB251_WPF_ASS2
     /// </summary>
     public partial class EmployeeMainWindow : Page
     {
-        private static EmployeeManager _employeeManager = new EmployeeManager();
-        private QuotationManager _quotationManager = new QuotationManager();
-
-        //testing
-
-        private void LogoutButton(object sender, RoutedEventArgs e)
-        {
-            _employeeManager.SetLoggedInStatus(false);
-        }
+        private static EmployeeManager _employeeManager;
+        private QuotationManager _quotationManager;
 
         public EmployeeMainWindow(EmployeeManager employeeManager)
         {
@@ -39,11 +21,16 @@ namespace IAB251_WPF_ASS2
             DataContext = _employeeManager; // Bind EmployeeManager to the DataContext
         }
 
+        private void LogoutButton(object sender, RoutedEventArgs e)
+        {
+            _employeeManager.SetLoggedInStatus(false);
+        }
+
         private void Register_Click(object sender, RoutedEventArgs e)
         {
             var registerWindow = new EmployeeRegistration(_employeeManager);
 
-            //navigate to page
+            // Navigate to page
             var mainwindow = (NewMainWindow)Application.Current.MainWindow;
             mainwindow.NavigateToPage(registerWindow);
         }
@@ -52,43 +39,37 @@ namespace IAB251_WPF_ASS2
         {
             var loginWindow = new EmployeeLogin(_employeeManager);
 
-            //navigate to page
+            // Navigate to page
             var mainwindow = (NewMainWindow)Application.Current.MainWindow;
             mainwindow.NavigateToPage(loginWindow);
         }
 
         private void ViewAllQuotations_Click(object sender, RoutedEventArgs e)
         {
-            var employeeManager = new EmployeeManager();
-            var quotationManager = new QuotationManager(); // Initialize QuotationManager
-            var quotationviewWindow = new QuotationView(_quotationManager, _employeeManager);
+            var quotationViewWindow = new QuotationView(_quotationManager, _employeeManager);
 
-            //navigate to page
+            // Navigate to page
             var mainwindow = (NewMainWindow)Application.Current.MainWindow;
-            mainwindow.NavigateToPage(quotationviewWindow);
+            mainwindow.NavigateToPage(quotationViewWindow);
         }
 
-        private void ViewRateSchedule_Click(object sender, RoutedEventArgs e) // update once jake has pushed
+        private void ViewRateSchedule_Click(object sender, RoutedEventArgs e)
         {
-            var employeeManager = new EmployeeManager();
-            var quotationManager = new QuotationManager(); // Initialize QuotationManager
-            var ratescheduleviewWindow = new RateSchedule();
-      
+            // Use the existing _quotationManager and _employeeManager
+            var rateScheduleViewWindow = new RateSchedule(_quotationManager, _employeeManager);
 
-            //navigate to page
+            // Navigate to page
             var mainwindow = (NewMainWindow)Application.Current.MainWindow;
-            mainwindow.NavigateToPage(ratescheduleviewWindow);
+            mainwindow.NavigateToPage(rateScheduleViewWindow);
         }
 
         private void PrepareQuotations_Click(object sender, RoutedEventArgs e)
         {
-            var employeeManager = new EmployeeManager();
-            var quotationManager = new QuotationManager(); // Initialize QuotationManager
-            var requestviewWindow = new OfficerRequestView(_quotationManager, _employeeManager);
+            var requestViewWindow = new OfficerRequestView(_quotationManager, _employeeManager);
 
-            //navigate to page
+            // Navigate to page
             var mainwindow = (NewMainWindow)Application.Current.MainWindow;
-            mainwindow.NavigateToPage(requestviewWindow);
+            mainwindow.NavigateToPage(requestViewWindow);
         }
     }
 }
