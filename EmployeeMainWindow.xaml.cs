@@ -24,6 +24,9 @@ namespace IAB251_WPF_ASS2
         private static EmployeeManager _employeeManager = new EmployeeManager();
         private QuotationManager _quotationManager = new QuotationManager();
 
+        //testing
+
+
 
         public EmployeeMainWindow(EmployeeManager employeeManager)
         {

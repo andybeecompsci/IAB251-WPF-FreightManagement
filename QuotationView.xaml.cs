@@ -30,7 +30,7 @@ namespace IAB251_WPF_ASS2
             this.employeeManager = employeeManager; 
 
             // bind the data to grid
-            QuotationGridView.ItemsSource = quotationManager.GetQuotations();
+            QuotationGridView.ItemsSource = quotationManager.GetPendingRequests(); //changed from GetQuotations 
 
             // add something to load sample data maybe?
 
@@ -49,7 +49,7 @@ namespace IAB251_WPF_ASS2
         {
             // refreshes grid
             QuotationGridView.ItemsSource = null;
-            QuotationGridView.ItemsSource = quotationManager.GetQuotations();
+            QuotationGridView.ItemsSource = quotationManager.GetPendingRequests(); //changed from GetQuotations 
         }
     }
 }
