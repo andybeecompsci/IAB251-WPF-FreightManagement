@@ -27,11 +27,10 @@ namespace IAB251_WPF_ASS2
         {
             InitializeComponent();
             this.quotationManager = App.QuotationManager;
-            this.employeeManager = employeeManager; 
+            this.employeeManager = employeeManager;
 
             // bind the data to grid
-            QuotationGridView.ItemsSource = quotationManager.GetPendingRequests(); //changed from GetQuotations 
-
+            QuotationGridView.ItemsSource = quotationManager.GetQuotations(); 
             // add something to load sample data maybe?
 
         }
@@ -49,7 +48,7 @@ namespace IAB251_WPF_ASS2
         {
             // refreshes grid
             QuotationGridView.ItemsSource = null;
-            QuotationGridView.ItemsSource = quotationManager.GetPendingRequests(); //changed from GetQuotations 
+            QuotationGridView.ItemsSource = quotationManager.GetQuotations(); //changed from GetQuotations 
         }
     }
 }

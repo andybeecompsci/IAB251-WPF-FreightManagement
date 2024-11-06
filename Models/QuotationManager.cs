@@ -49,7 +49,7 @@ namespace IAB251_ASS2.Models
         // retreive quotations
         public List<Quotation> GetQuotations()
         {
-            GenerateSampleQuotations();
+            //GenerateSampleQuotations();
             return quotations;
         }
 
@@ -164,72 +164,72 @@ namespace IAB251_ASS2.Models
 
             }
         }
-        public void GenerateSampleQuotations()
-        {
-            quotations.AddRange(new List<Quotation>
-            {
-                new Quotation(
-                    1,
-                    "John Doe",
-                    "john.doe@example.com",
-                    DateTime.Now.AddDays(-10),
-                    "Pending",
-                    "20ft",
-                    "Export - Standard",
-                    300m,
-                    150m,
-                    "Awaiting approval from customer"
-                ),
-                new Quotation(
-                    2,
-                    "Jane Smith",
-                    "jane.smith@example.com",
-                    DateTime.Now.AddDays(-8),
-                    "Accepted",
-                    "40ft",
-                    "Import - Fragile",
-                    500m,
-                    200m,
-                    "Quotation accepted by customer"
-                ),
-                new Quotation(
-                    3,
-                    "Alice Brown",
-                    "alice.brown@example.com",
-                    DateTime.Now.AddDays(-6),
-                    "Rejected",
-                    "40ft",
-                    "Export - Hazardous Materials",
-                    600m,
-                    250m,
-                    "Quotation rejected due to high cost"
-                ),
-                new Quotation(
-                    4,
-                    "Bob White",
-                    "bob.white@example.com",
-                    DateTime.Now.AddDays(-4),
-                    "Pending",
-                    "20ft",
-                    "Import - Standard",
-                    300m,
-                    150m,
-                    "Quotation awaiting review"
-                ),
-                new Quotation(
-                    5,
-                    "Carol Black",
-                    "carol.black@example.com",
-                    DateTime.Now.AddDays(-2),
-                    "Accepted",
-                    "40ft",
-                    "Export - Oversized Items",
-                    700m,
-                    300m,
-                    "Quotation accepted by customer"
-                )
-            });
-        }
+        //public void GenerateSampleQuotations()
+        //{
+        //    quotations.AddRange(new List<Quotation>
+        //    {
+        //        new Quotation(
+        //            1,
+        //            "John Doe",
+        //            "john.doe@example.com",
+        //            DateTime.Now.AddDays(-10),
+        //            "Pending",
+        //            "20ft",
+        //            "Export - Standard",
+        //            300m,
+        //            150m,
+        //            "Awaiting approval from customer"
+        //        ),
+        //        new Quotation(
+        //            2,
+        //            "Jane Smith",
+        //            "jane.smith@example.com",
+        //            DateTime.Now.AddDays(-8),
+        //            "Accepted",
+        //            "40ft",
+        //            "Import - Fragile",
+        //            500m,
+        //            200m,
+        //            "Quotation accepted by customer"
+        //        ),
+        //        new Quotation(
+        //            3,
+        //            "Alice Brown",
+        //            "alice.brown@example.com",
+        //            DateTime.Now.AddDays(-6),
+        //            "Rejected",
+        //            "40ft",
+        //            "Export - Hazardous Materials",
+        //            600m,
+        //            250m,
+        //            "Quotation rejected due to high cost"
+        //        ),
+        //        new Quotation(
+        //            4,
+        //            "Bob White",
+        //            "bob.white@example.com",
+        //            DateTime.Now.AddDays(-4),
+        //            "Pending",
+        //            "20ft",
+        //            "Import - Standard",
+        //            300m,
+        //            150m,
+        //            "Quotation awaiting review"
+        //        ),
+        //        new Quotation(
+        //            5,
+        //            "Carol Black",
+        //            "carol.black@example.com",
+        //            DateTime.Now.AddDays(-2),
+        //            "Accepted",
+        //            "40ft",
+        //            "Export - Oversized Items",
+        //            700m,
+        //            300m,
+        //            "Quotation accepted by customer"
+        //        )
+        //    });
+        //}
     }
 
     public static class RateExtension
