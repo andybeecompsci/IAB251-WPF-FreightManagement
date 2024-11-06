@@ -59,7 +59,7 @@ namespace IAB251_WPF_ASS2
                 TotalChargesAmount.Text = (currentquotation.DepotCharges+ currentquotation.LCLCharges).ToString("C");
                 // Calculate and display discount
                 discountPercentage = App.QuotationManager.CalculateDiscount(request.ContainerQuantity, request.QuarantineDetails, request.FumigationDetails);
-                DiscountAmount.Text = discountPercentage.ToString("0.##");
+                DiscountAmount.Text = discountPercentage.ToString("0.##") + "%";
             }
         }
 

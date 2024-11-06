@@ -26,6 +26,7 @@ namespace IAB251_ASS2.Models
         public event PropertyChangedEventHandler PropertyChanged;
 
         private bool _isLoggedIn;
+        private bool _isLoggedOut = true;
         private string _currentUserEmail;
 
         public bool IsLoggedIn
@@ -37,6 +38,19 @@ namespace IAB251_ASS2.Models
                 {
                     _isLoggedIn = value;
                     OnPropertyChanged(nameof(IsLoggedIn));
+                }
+            }
+        }
+
+        public bool IsLoggedOut
+        {
+            get => _isLoggedOut;
+            private set
+            {
+                if (_isLoggedOut != value)
+                {
+                    _isLoggedOut = value;
+                    OnPropertyChanged(nameof(IsLoggedOut));
                 }
             }
         }
@@ -64,6 +78,7 @@ namespace IAB251_ASS2.Models
         public void SetLoggedInStatus(bool status)
             {
                 IsLoggedIn = status;
+                IsLoggedOut = !status;
             }
 
 

@@ -22,6 +22,7 @@ namespace IAB251_WPF_ASS2
     public partial class CustomerRegistration : Page
     {
         private CustomerManager customerManager;
+        private QuotationManager quotationManager;
 
         public CustomerRegistration(CustomerManager manager)
         {
@@ -61,6 +62,12 @@ namespace IAB251_WPF_ASS2
             // Clear the form and display a success message
             ClearForm();
             Messagetxt.Text = "Registration successful!";
+
+            var customerMainWindow = new MainWindow(customerManager, quotationManager);
+
+            //navigate to page
+            var mainwindow = (NewMainWindow)Application.Current.MainWindow;
+            mainwindow.NavigateToPage(customerMainWindow);
         }
 
         private void ClearForm()

@@ -28,5 +28,7 @@ namespace IAB251_WPF_ASS2
         private static QuotationManager _quotationManager = new QuotationManager();
         public static QuotationManager QuotationManager => _quotationManager;
 
+
+
     }
 }
