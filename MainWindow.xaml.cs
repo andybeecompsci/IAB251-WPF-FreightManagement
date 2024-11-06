@@ -37,6 +37,10 @@ namespace IAB251_WPF_ASS2
             DataContext = _customerManager;
         }
 
+        private void LogoutButton(object sender, RoutedEventArgs e)
+        {
+            _customerManager.Logout();
+        }
         private void Register_Click(object sender, RoutedEventArgs e)
         {
             var registerWindow = new CustomerRegistration(_customerManager);
@@ -66,7 +70,13 @@ namespace IAB251_WPF_ASS2
             mainwindow.NavigateToPage(requestWindow);
         }
 
-        
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            //navigate to page
+            var mainwindow = (NewMainWindow)Application.Current.MainWindow;
+            mainwindow.NavigateToPage(new CustomerOrEmployee());
+        }
 
     }
 }
