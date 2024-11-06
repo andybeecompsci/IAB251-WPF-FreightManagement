@@ -6,6 +6,11 @@
        Background="White">
 
     <Grid>
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10" Orientation="Horizontal">
+            <Button Content="Back" Width="100" Click="BackButton_Click"/>
+            <Button Content="Logout" Width="100" Click="LogoutButton"
+                    Visibility="{Binding IsLoggedIn, Converter={StaticResource BoolToVisibilityConverter}}"/>
+        </StackPanel>
         <TextBlock
             TextAlignment="Center"
             FontSize="24"
