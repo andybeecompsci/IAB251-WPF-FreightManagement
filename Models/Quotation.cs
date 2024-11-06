@@ -16,8 +16,8 @@ namespace IAB251_ASS2.Models
         public string ContainerType { get; set; }
         public string Scope { get; set; }
         //public decimal Charges { get; set; }
-        public decimal DepotCharges { get; set; }
-        public decimal LCLCharges { get; set; } 
+        public decimal DepotCharges { get; set; } = 0m;
+        public decimal LCLCharges { get; set; } = 0m;
         public string Message { get; set; }
         //public decimal DiscountedCharges { get; set; }
 
