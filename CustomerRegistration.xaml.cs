@@ -26,7 +26,7 @@ namespace IAB251_WPF_ASS2
         public CustomerRegistration(CustomerManager manager)
         {
             InitializeComponent();
-            customerManager = manager;
+            customerManager = App.CustomerManager;
         }
 
         private void RegisterButtonClick(object sender, RoutedEventArgs e)
@@ -56,7 +56,7 @@ namespace IAB251_WPF_ASS2
             };
 
             // Add the customer to CustomerManager
-            customerManager.AddCustomer(newCustomer);
+            customerManager.AddCustomer(newCustomer); // NEW
 
             // Clear the form and display a success message
             ClearForm();

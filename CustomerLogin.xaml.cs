@@ -18,12 +18,13 @@ namespace IAB251_WPF_ASS2
 {
     public partial class CustomerLogin : Page
     {
+
         private CustomerManager customerManager;
 
         public CustomerLogin(CustomerManager manager)
         {
             InitializeComponent();
-            customerManager = manager;
+            customerManager = App.CustomerManager;
         }
 
         private void LoginButtonClick(object sender, RoutedEventArgs e)
@@ -39,6 +40,8 @@ namespace IAB251_WPF_ASS2
             if (isLoggedIn)
             {
                 Messagetxt.Text = "Login successful!";
+                var loggedInCustomer = App.CustomerManager.GetCustomerByEmail(App.CustomerManager.CurrentUserEmail); // NEW
+                NavigationService?.Navigate(new MainWindow());
                 // Navigate to another window or perform other actions on successful login
             }
             else

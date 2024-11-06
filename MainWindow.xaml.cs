@@ -26,7 +26,7 @@ namespace IAB251_WPF_ASS2
             InitializeComponent();
             _customerManager = new CustomerManager();
             _quotationManager = new QuotationManager();
-            DataContext = _customerManager; // Bind CustomerManager to the DataContext
+            DataContext = App.CustomerManager; // Bind CustomerManager to the DataContext
         }
 
         public MainWindow(CustomerManager customerManager, QuotationManager quotationManager)
@@ -63,8 +63,8 @@ namespace IAB251_WPF_ASS2
         {
             var customerManager = new CustomerManager(); 
             var quotationManager = new QuotationManager(); // Initialize QuotationManager
-            var requestWindow = new QuotationRequestWindow(_customerManager, _quotationManager);
-           
+            var requestWindow = new QuotationRequestWindow(App.CustomerManager, App.QuotationManager);
+
             //navigate to page
             var mainwindow = (NewMainWindow)Application.Current.MainWindow;
             mainwindow.NavigateToPage(requestWindow);

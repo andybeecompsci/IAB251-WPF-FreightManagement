@@ -10,8 +10,20 @@ namespace IAB251_ASS2.Models
 
         public class CustomerManager : INotifyPropertyChanged
         {
-            // Event to notify UI of property changes
-            public event PropertyChangedEventHandler PropertyChanged;
+        private static CustomerManager _instance; // NEW
+        public static CustomerManager Instance  // NEW
+        {
+            get
+            {
+                if (_instance == null)  // NEW
+                {
+                    _instance = new CustomerManager(); // NEW
+                }
+                return _instance; // NEW
+            }
+        }
+        // Event to notify UI of property changes
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private bool _isLoggedIn;
         private string _currentUserEmail;
@@ -32,7 +44,7 @@ namespace IAB251_ASS2.Models
         public void Logout()
         {
             CurrentUserEmail = null;
-            SetLoggedInStatus(false);
+            IsLoggedIn = false;
         }
 
         // Stores the email of the currently logged-in user
@@ -78,8 +90,8 @@ namespace IAB251_ASS2.Models
                 bool isValid = customer != null && customer.Password == password;
                 if (isValid)
                 {
-                SetLoggedInStatus(true);
-                CurrentUserEmail = email; //setcurrentuseremail
+                IsLoggedIn = true; // NEW
+                CurrentUserEmail = email; // NEW
 
                 //debug
                 Console.WriteLine($"CurrentUserEmail set to: {CurrentUserEmail}");  // Debug: Print CurrentUserEmail
@@ -87,6 +99,8 @@ namespace IAB251_ASS2.Models
             }
             return isValid;
             }
+
+
 
             protected void OnPropertyChanged(string propertyName)
             {
