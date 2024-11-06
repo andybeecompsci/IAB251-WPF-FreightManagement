@@ -67,15 +67,14 @@ namespace IAB251_WPF_ASS2
         {
             if (selectedRequest != null)
             {
-                // Display success message
                 Messagetxt.Text = "Discount applied and quotation accepted";
 
                 //apply discount    
                 App.QuotationManager.ApplyDiscount(discountPercentage, selectedRequest.RequestID);
 
-                // Update the request status to accepted
+                //update the request status 
                 App.QuotationManager.AcceptQuotationRequest(selectedRequest.RequestID);
-                RefreshDataGrid();  // Refresh the list of requests
+                RefreshDataGrid();  //refresh the list 
             }
             else
             {

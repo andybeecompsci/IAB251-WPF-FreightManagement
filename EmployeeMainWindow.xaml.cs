@@ -58,8 +58,6 @@ namespace IAB251_WPF_ASS2
 
         private void ViewAllQuotations_Click(object sender, RoutedEventArgs e)
         {
-            //var employeeManager = new EmployeeManager();
-            //var quotationManager = new QuotationManager(); // Initialize QuotationManager
             var quotationviewWindow = new QuotationView(_quotationManager, _employeeManager);
 
             //navigate to page
@@ -69,8 +67,6 @@ namespace IAB251_WPF_ASS2
 
         private void ViewRateSchedule_Click(object sender, RoutedEventArgs e) // update once jake has pushed
         {
-            //var employeeManager = new EmployeeManager();
-            //var quotationManager = new QuotationManager(); // Initialize QuotationManager
             var ratescheduleviewWindow = new RateSchedule(_quotationManager, _employeeManager);
 
 
@@ -81,8 +77,6 @@ namespace IAB251_WPF_ASS2
 
         private void PrepareQuotations_Click(object sender, RoutedEventArgs e)
         {
-            //var employeeManager = new EmployeeManager();
-            //var quotationManager = new QuotationManager(); // Initialize QuotationManager
             var requestviewWindow = new OfficerRequestView(_quotationManager, _employeeManager);
 
             //navigate to page

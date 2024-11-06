@@ -13,7 +13,7 @@ namespace IAB251_ASS2.Models
         private List<QuotationRequest> quotationRequests { get; set; } = new List<QuotationRequest>();
 
         //add Quotation Request
-        public void AddQuotationRequest(QuotationRequest qRequest) //needs to be fleshed out 
+        public void AddQuotationRequest(QuotationRequest qRequest) 
         {
             quotationRequests.Add(qRequest);
 
@@ -28,11 +28,6 @@ namespace IAB251_ASS2.Models
             return quotationRequests.FirstOrDefault(r => r.RequestID == id);
         }
 
-        //make quotation request into quotation???
-
-
-
-        // ABOVE STUFF NEEDS TO BE COMPATIBLE WITH THE BELOW
 
         // store quotations in a list
 

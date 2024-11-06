@@ -31,21 +31,5 @@ namespace IAB251_ASS2.Models
             Password = password;
 
         }
-
-        //public static string Password(string password)
-        //{
-
-        //}
-
-        //public void PrintDetails()
-        //{
-        //    Console.WriteLine($"Driver Details");
-        //    Console.WriteLine($"Employee Name:{FirstName}{LastName}");
-        //    Console.WriteLine($"Email: {Email}");
-        //    Console.WriteLine($"Phone Number: {PhoneNumber}");
-        //    Console.WriteLine($"Employee Type: {EmployeeType}");
-        //    Console.WriteLine($"Address: {Address}");
-
-        //}
     }
 }

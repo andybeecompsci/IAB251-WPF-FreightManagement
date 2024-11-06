@@ -9,18 +9,7 @@ namespace IAB251_ASS2.Models
 {
     public class EmployeeManager : INotifyPropertyChanged
     {
-        //private static CustomerManager _instance; 
-        //public static CustomerManager Instance  
-        //{
-        //    get
-        //    {
-        //        if (_instance == null)  
-        //        {
-        //            _instance = new CustomerManager(); 
-        //        }
-        //        return _instance; 
-        //    }
-        //}
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private bool _isLoggedIn;

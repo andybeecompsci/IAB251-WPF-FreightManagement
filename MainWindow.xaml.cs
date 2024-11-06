@@ -21,13 +21,6 @@ namespace IAB251_WPF_ASS2
         private CustomerManager _customerManager;
         private QuotationManager _quotationManager; 
 
-        //public MainWindow()
-        //{
-        //    InitializeComponent();
-        //    _customerManager = App.CustomerManager;
-        //    _quotationManager = App.QuotationManager;
-        //    DataContext = App.CustomerManager; // Bind CustomerManager to the DataContext
-        //}
 
         public MainWindow(CustomerManager customerManager, QuotationManager quotationManager)
         {
