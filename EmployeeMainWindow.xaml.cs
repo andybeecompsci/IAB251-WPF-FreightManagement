@@ -26,7 +26,10 @@ namespace IAB251_WPF_ASS2
 
         //testing
 
-
+        private void LogoutButton(object sender, RoutedEventArgs e)
+        {
+            _employeeManager.SetLoggedInStatus(false);
+        }
 
         public EmployeeMainWindow(EmployeeManager employeeManager)
         {

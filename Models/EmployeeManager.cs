@@ -98,22 +98,5 @@ namespace IAB251_ASS2.Models
         }
 
 
-        // OLD STUFF
-
-        //// validatation
-        //public bool IsLoggedIn { get; private set; } = false;
-        //public void SetLoggedInStatus(bool status)
-        //{
-        //    IsLoggedIn = status;
-        //}
-
-        //private List<Employee> employees = new List<Employee>();
-
-        //public void AddEmployee(Employee employee)
-        //{
-        //    employees.Add(employee);
-        //}
-
-
     }
 }
