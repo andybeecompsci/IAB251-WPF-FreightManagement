@@ -40,6 +40,12 @@ namespace IAB251_ASS2.Models
             }
         }
 
+        public void Logout()
+        {
+            CurrentUserEmail = null;
+            SetLoggedInStatus(false);
+        }
+
         // Stores the email of the currently logged-in user
         public string CurrentUserEmail
         {
