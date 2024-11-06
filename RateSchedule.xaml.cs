@@ -7,12 +7,11 @@ namespace IAB251_WPF_ASS2
 {
     public partial class RateSchedule : Page
     {
-        
+        // Static list to hold different rates
         public static List<Rate> Rates { get; private set; }
         private QuotationManager _quotationManager;
         private EmployeeManager _employeeManager;
 
-       
         static RateSchedule()
         {
             LoadRates();
@@ -22,6 +21,8 @@ namespace IAB251_WPF_ASS2
         public RateSchedule(QuotationManager quotationManager, EmployeeManager employeeManager)
         {
             InitializeComponent();
+            // Reference to the quotation manager and employee manager
+
             _quotationManager = quotationManager;
             _employeeManager = employeeManager;
 
@@ -29,7 +30,7 @@ namespace IAB251_WPF_ASS2
             RateScheduleExtractData.ItemsSource = Rates;
         }
 
-      
+        // Loads and initializes the Rates with predefined values.
         private static void LoadRates()
         {
             Rates = new List<Rate>
@@ -46,6 +47,7 @@ namespace IAB251_WPF_ASS2
             };
         }
 
+        // Event handler for the back button - uses the NavigationService to navigate to the previous page if possible.
         private void BackButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             if (NavigationService != null && NavigationService.CanGoBack)
@@ -55,6 +57,7 @@ namespace IAB251_WPF_ASS2
         }
     }
 
+    // Represents a rate with a type and charges for different container sizes.
     public class Rate
     {
         public string Type { get; set; }

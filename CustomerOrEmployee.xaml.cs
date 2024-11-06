@@ -20,13 +20,17 @@ namespace IAB251_WPF_ASS2
     /// </summary>
     public partial class CustomerOrEmployee : Page
     {
+        // Management class instances for handling related to customers.
         private static CustomerManager _customerManager = new CustomerManager();
+
+        // Management class instances for handling related to employees.
         private static EmployeeManager _employeeManager = new EmployeeManager();
 
 
 
         public CustomerOrEmployee()
         {
+            // Instantiate managers for use in this page.
             _customerManager = new CustomerManager();
             _employeeManager = new EmployeeManager();
 
@@ -34,15 +38,17 @@ namespace IAB251_WPF_ASS2
             InitializeComponent();
         }
 
+        // Handles the click event for the Customer button
         private void Customer_Click(object sender, RoutedEventArgs e)
         {
             var customermainWindow = new MainWindow(_customerManager, new QuotationManager());
 
-            //navigate to page
+            // navigate to page
             var mainwindow = (NewMainWindow)Application.Current.MainWindow;
             mainwindow.NavigateToPage(customermainWindow);
         }
 
+        // Handles the click event for the Employee button
         private void Employee_Click(object sender, RoutedEventArgs e)
         {
             var employeeManager = new EmployeeManager();
@@ -54,7 +60,7 @@ namespace IAB251_WPF_ASS2
 
 
         }
-
+        // Handles the click event for the Exit button
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
