@@ -66,7 +66,7 @@ namespace IAB251_ASS2.Models
             IsLoggedOut = !status;
         }
 
-        // List of customers
+        // List of employees
         private List<Employee> Employees { get; set; } = new List<Employee>();
 
         // Add new customer

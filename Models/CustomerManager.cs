@@ -58,7 +58,7 @@ namespace IAB251_ASS2.Models
         public void Logout()
         {
             CurrentUserEmail = null;
-            IsLoggedIn = false;
+            SetLoggedInStatus(false);
         }
 
         // Stores the email of the currently logged-in user
@@ -105,7 +105,7 @@ namespace IAB251_ASS2.Models
                 bool isValid = customer != null && customer.Password == password;
                 if (isValid)
                 {
-                IsLoggedIn = true; // NEW
+                SetLoggedInStatus(true);
                 CurrentUserEmail = email; // NEW
 
                 //debug

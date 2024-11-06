@@ -18,23 +18,23 @@ namespace IAB251_WPF_ASS2
 {
     public partial class MainWindow : Page
     {
-        private static CustomerManager _customerManager = new CustomerManager();
-        private QuotationManager _quotationManager = new QuotationManager(); 
+        private CustomerManager _customerManager;
+        private QuotationManager _quotationManager; 
 
-        public MainWindow()
-        {
-            InitializeComponent();
-            _customerManager = new CustomerManager();
-            _quotationManager = new QuotationManager();
-            DataContext = App.CustomerManager; // Bind CustomerManager to the DataContext
-        }
+        //public MainWindow()
+        //{
+        //    InitializeComponent();
+        //    _customerManager = App.CustomerManager;
+        //    _quotationManager = App.QuotationManager;
+        //    DataContext = App.CustomerManager; // Bind CustomerManager to the DataContext
+        //}
 
         public MainWindow(CustomerManager customerManager, QuotationManager quotationManager)
         {
             InitializeComponent();
-            _customerManager = customerManager;
-            _quotationManager = quotationManager;
-            DataContext = _customerManager;
+            _customerManager = App.CustomerManager;
+            _quotationManager = App.QuotationManager;
+            DataContext = App.CustomerManager; // Bind CustomerManager to the DataContext
         }
 
         private void LogoutButton(object sender, RoutedEventArgs e)
