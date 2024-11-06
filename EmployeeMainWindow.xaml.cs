@@ -90,5 +90,13 @@ namespace IAB251_WPF_ASS2
             var mainwindow = (NewMainWindow)Application.Current.MainWindow;
             mainwindow.NavigateToPage(requestviewWindow);
         }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            //navigate to page
+            var mainwindow = (NewMainWindow)Application.Current.MainWindow;
+            mainwindow.NavigateToPage(new CustomerOrEmployee());
+        }
     }
 }

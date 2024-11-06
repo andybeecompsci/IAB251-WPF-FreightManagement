@@ -9,9 +9,10 @@
       Title="EmployeeMainWindow">
 
     <Grid>
-        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10">
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10" Orientation="Horizontal">
+            <Button Content="Back" Width="100" Click="BackButton_Click"/>
             <Button Content="Logout" Width="100" Click="LogoutButton"
-                    Visibility="{Binding IsLoggedOut, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                    Visibility="{Binding IsLoggedIn, Converter={StaticResource BoolToVisibilityConverter}}"/>
         </StackPanel>
         <TextBlock
                     TextAlignment="Center"

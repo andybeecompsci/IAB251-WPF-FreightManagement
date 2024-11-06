@@ -56,5 +56,10 @@ namespace IAB251_WPF_ASS2
 
 
         }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
