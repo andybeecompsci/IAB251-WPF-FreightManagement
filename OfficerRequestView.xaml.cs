@@ -24,6 +24,7 @@ namespace IAB251_WPF_ASS2
         private QuotationManager quotationManager;
         private QuotationRequest selectedRequest;
         private EmployeeManager employeeManager;
+        //private Quotation 
         public double discountPercentage;
         public OfficerRequestView(QuotationManager quotationManager, EmployeeManager employeeManager)
         {
@@ -45,6 +46,13 @@ namespace IAB251_WPF_ASS2
             {
                 selectedRequest = request;
 
+                var currentquotation = quotationManager.QuotationByNumber(selectedRequest.RequestID);
+                
+                //display charges
+
+                DepotChargesAmount.Text = currentquotation.DepotCharges.ToString("C");
+                LCLChargesAmount.Text = currentquotation.LCLCharges.ToString("C");
+                TotalChargesAmount.Text = (currentquotation.DepotCharges+ currentquotation.LCLCharges).ToString("C");
                 // Calculate and display discount
                 discountPercentage = quotationManager.CalculateDiscount(request.ContainerQuantity, request.QuarantineDetails, request.FumigationDetails);
                 DiscountAmount.Text = discountPercentage.ToString("0.##");
