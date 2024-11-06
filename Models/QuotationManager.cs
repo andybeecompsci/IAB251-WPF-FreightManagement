@@ -42,7 +42,7 @@ namespace IAB251_ASS2.Models
                 .GetFeeByContainerSize(request.Width) ?? 0;
 
             decimal depotCharges = RateSchedule.Rates
-                .Where(r => r.Type != "LCL Delivery Depot" && r.Type != "GST")  
+                .Where(r => r.Type != "LCL Delivery Depot" && r.Type != "GST")
                 .Sum(r => decimal.Parse(request.Width == "20ft" ? r.TwentyFtFee.Trim('$') : r.FortyFtFee.Trim('$')));
 
 
@@ -124,3 +124,4 @@ namespace IAB251_ASS2.Models
             return decimal.Parse(feeString.Trim('$'));  // Remove '$' and parse to decimal
         }
     }
+}
