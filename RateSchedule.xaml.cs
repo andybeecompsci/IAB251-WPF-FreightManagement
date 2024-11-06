@@ -7,19 +7,30 @@ namespace IAB251_WPF_ASS2
 {
     public partial class RateSchedule : Page
     {
+        
         public static List<Rate> Rates { get; private set; }
         private QuotationManager _quotationManager;
         private EmployeeManager _employeeManager;
 
+       
+        static RateSchedule()
+        {
+            LoadRates();
+        }
+
+        
         public RateSchedule(QuotationManager quotationManager, EmployeeManager employeeManager)
         {
             InitializeComponent();
             _quotationManager = quotationManager;
             _employeeManager = employeeManager;
-            LoadRateSchedule();
+
+            // Set ItemsSource if Rates is needed in the UI
+            RateScheduleExtractData.ItemsSource = Rates;
         }
 
-        private void LoadRateSchedule()
+      
+        private static void LoadRates()
         {
             Rates = new List<Rate>
             {
@@ -33,8 +44,6 @@ namespace IAB251_WPF_ASS2
                 new Rate { Type = "Walf Inspection", TwentyFtFee = "$60", FortyFtFee = "$90" },
                 new Rate { Type = "GST", TwentyFtFee = "10%", FortyFtFee = "10%" }
             };
-
-            RateScheduleExtractData.ItemsSource = Rates;
         }
 
         private void BackButton_Click(object sender, System.Windows.RoutedEventArgs e)
