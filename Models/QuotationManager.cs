@@ -1,36 +1,52 @@
-﻿using IAB251_WPF_ASS2;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace IAB251_ASS2.Models
 {
     public class QuotationManager
     {
-        private List<QuotationRequest> quotationRequests = new List<QuotationRequest>();
-        private List<Quotation> quotations = new List<Quotation>();
+        private List<QuotationRequest> quotationRequests { get; set; } = new List<QuotationRequest>();
 
-        public void AddQuotationRequest(QuotationRequest qRequest)
+        //add Quotation Request
+        public void AddQuotationRequest(QuotationRequest qRequest) //needs to be fleshed out 
         {
             quotationRequests.Add(qRequest);
         }
 
+        //retrive quotation request by ID
         public QuotationRequest GetQuotationRequest(int id)
         {
             return quotationRequests.FirstOrDefault(r => r.RequestID == id);
         }
 
+        //make quotation request into quotation???
+
+
+
+        // ABOVE STUFF NEEDS TO BE COMPATIBLE WITH THE BELOW
+
+        // store quotations in a list
+
+        //make list of pending quotations 
         public List<QuotationRequest> GetPendingRequests()
         {
             return quotationRequests.Where(r => r.Status == "Pending").ToList();
         }
 
+        private List<Quotation> quotations = new List<Quotation>();
+
+        // retreive quotations
         public List<Quotation> GetQuotations()
         {
             GenerateSampleQuotations();
             return quotations;
         }
 
+        // add quotation
         public void AddQuotation(Quotation quotation)
         {
             quotations.Add(quotation);
@@ -38,13 +54,10 @@ namespace IAB251_ASS2.Models
 
         public Quotation RequestToQuotation(QuotationRequest request)
         {
-            decimal lclCharges = RateSchedule.Rates
-                .FirstOrDefault(r => r.Type == "LCL Delivery Depot" && r.Type == request.Width + "ft")?
-                .GetFeeByContainerSize(request.Width) ?? 0;
 
             int quotationnumber = request.RequestID;
             string clientname = $"{request.CustomerInfo.FirstName} {request.CustomerInfo.LastName}";
-            string clientemail = request.CustomerInfo.EmailAddress;
+            string clientemail = $"{request.CustomerInfo.EmailAddress}";
             DateTime dateissue = DateTime.Now;
             string status = request.Status;
             string containertype = request.Width;
@@ -58,84 +71,85 @@ namespace IAB251_ASS2.Models
             decimal lclcharges = 0; // Assume a fixed LCL delivery charge
 
 
-            decimal gstAmount = depotCharges * 0.10m;  // 10% GST on depot charges
-
             Quotation quotation = new Quotation(
-                request.RequestID,
-                $"{request.CustomerInfo.FirstName} {request.CustomerInfo.LastName}",
-                request.CustomerInfo.EmailAddress,
-                DateTime.Now,
-                request.Status,
-                request.Width,
-                $"Container Quantity: {request.ContainerQuantity}, Goods Type: {request.GoodsType}, Port Type: {request.PortType}, Packing Type: {request.PackingType}, Quarantine Detail: {request.QuarantineDetails}, Fumigation Details: {request.FumigationDetails}",
-                depotCharges + gstAmount,  // Including GST in depot charges
-                lclCharges,
-                ""
+                quotationnumber,
+                clientname,
+                clientemail,
+                dateissue,
+                status,
+                containertype,
+                scope,
+                depotcharges,
+                lclcharges,
+                message
             );
 
+            // Add quotation to list
             AddQuotation(quotation);
             return quotation;
         }
 
-        public double CalculateDiscount(int containerQuantity, string quarantineDetails, string fumigationDetails)
+        // calculate discount
+        public double CalculateDiscount(int containerquantity, string quarantinedetails, string fumigationdetails)
         {
-            bool quarantineRequired = !string.IsNullOrEmpty(quarantineDetails);
-            bool fumigationRequired = !string.IsNullOrEmpty(fumigationDetails);
+            bool QuarantineRequired = !string.IsNullOrEmpty(quarantinedetails);
+            bool FumigationRequired = !string.IsNullOrEmpty(fumigationdetails);
 
-            if (containerQuantity > 10 && quarantineRequired && fumigationRequired)
+            if (containerquantity > 10 && QuarantineRequired && FumigationRequired)
                 return 10.0;
-            else if (containerQuantity > 5 && quarantineRequired && fumigationRequired)
+            else if (containerquantity > 5 && QuarantineRequired && FumigationRequired)
                 return 5.0;
-            else if (containerQuantity > 5 && (quarantineRequired || fumigationRequired))
+            else if (containerquantity > 5 && (QuarantineRequired || FumigationRequired))
                 return 2.5;
             else
                 return 0;
         }
 
+        // apply discount
         public void ApplyDiscount(double discount, int requestID)
         {
-            var quotation = quotations.FirstOrDefault(q => q.QuotationNumber == requestID);
-            if (quotation != null && discount > 0)
+            var quotationnumber = quotations.FirstOrDefault(r => r.QuotationNumber == requestID);
+            if (discount > 0)
             {
-                decimal discountFactor = 1 - ((decimal)discount / 100);
-                quotation.DepotCharges *= discountFactor;
-                quotation.LCLCharges *= discountFactor;
+                decimal discountApplied = 1 - ((decimal)discount / 100);
+                quotationnumber.DepotCharges *= discountApplied;
+                quotationnumber.LCLCharges *= discountApplied;
             }
         }
 
+        // retreive quotation by number // IS THIS NEEDED
+        public Quotation QuotationByNumber(int quotationNumber)
+        {
+            return quotations.FirstOrDefault(q => q.QuotationNumber == quotationNumber);
+        }
+
+        // accepts quotation and updates status to Accepted
         public void AcceptQuotationRequest(int requestID)
         {
             var request = quotationRequests.FirstOrDefault(r => r.RequestID == requestID);
-            var quotation = quotations.FirstOrDefault(q => q.QuotationNumber == requestID);
-            if (request != null && quotation != null)
+            var quotationnumber = quotations.FirstOrDefault(r => r.QuotationNumber == requestID);
+            if (request != null)
             {
                 request.Status = "Accepted";
-                quotation.Status = "Accepted";
+                quotationnumber.Status = "Accepted";
             }
         }
 
+        // rejects quotation and updates status to Rejected
         public void RejectQuotationRequest(int requestID, string message)
         {
             var request = quotationRequests.FirstOrDefault(r => r.RequestID == requestID);
-            var quotation = quotations.FirstOrDefault(q => q.QuotationNumber == requestID);
-            if (request != null && quotation != null)
+            var quotationnumber = quotations.FirstOrDefault(r => r.QuotationNumber == requestID);
+            if (request != null)
             {
                 request.Status = "Rejected";
-                quotation.Status = "Rejected";
-                quotation.Message = message;
+                quotationnumber.Status = "Rejected";
+                quotationnumber.Message = message;
+                // add something to send message to customer when they login next
+                //message;
+
             }
         }
-    }
-
-    public static class RateExtension
-    {
-        public static decimal GetFeeByContainerSize(this Rate rate, string containerSize)
-        {
-            // Check if containerSize is "20ft" and select the appropriate fee
-            string feeString = containerSize == "20ft" ? rate.TwentyFtFee : rate.FortyFtFee;
-            return decimal.Parse(feeString.Trim('$'));  // Remove '$' and parse to decimal
-        }
-
         public void GenerateSampleQuotations()
         {
             quotations.AddRange(new List<Quotation>
