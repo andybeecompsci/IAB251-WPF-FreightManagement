@@ -41,7 +41,7 @@ namespace IAB251_WPF_ASS2
             if (isLoggedIn)
             {
                 Messagetxt.Text = "Login successful!";
-                var loggedInCustomer = App.CustomerManager.GetCustomerByEmail(App.CustomerManager.CurrentUserEmail); // NEW
+                var loggedInCustomer = App.CustomerManager.GetCustomerByEmail(App.CustomerManager.CurrentUserEmail); 
                 NavigationService?.Navigate(new MainWindow(customerManager, quotationManager));
                 // Navigate to another window or perform other actions on successful login
                 //var mainwindow = (NewMainWindow)Application.Current.MainWindow;

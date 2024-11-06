@@ -33,13 +33,13 @@ namespace IAB251_WPF_ASS2
             _employeeManager = App.EmployeeManager;
 
             // Bind pending requests to DataGrid
-            var pendingRequests = App.QuotationManager.GetPendingRequests(); // NEW OR UPDATED
-            Console.WriteLine($"Pending requests count: {pendingRequests.Count}"); // NEW OR UPDATED
-            foreach (var req in pendingRequests) // NEW OR UPDATED
+            var pendingRequests = App.QuotationManager.GetPendingRequests(); 
+            Console.WriteLine($"Pending requests count: {pendingRequests.Count}"); 
+            foreach (var req in pendingRequests) 
             {
-                Console.WriteLine($"RequestID: {req.RequestID}, Client: {req.ClientName}, Status: {req.Status}"); // NEW OR UPDATED
+                Console.WriteLine($"RequestID: {req.RequestID}, Client: {req.ClientName}, Status: {req.Status}"); 
             }
-            RequestDataGrid.ItemsSource = pendingRequests; // NEW OR UPDATED
+            RequestDataGrid.ItemsSource = pendingRequests; 
 
         }
 

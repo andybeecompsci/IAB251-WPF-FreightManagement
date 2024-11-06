@@ -58,7 +58,7 @@ namespace IAB251_WPF_ASS2
             };
 
             // Add the customer to CustomerManager
-            customerManager.AddCustomer(newCustomer); // NEW
+            customerManager.AddCustomer(newCustomer); 
 
             // Clear the form and display a success message
             ClearForm();

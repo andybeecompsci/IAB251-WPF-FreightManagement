@@ -18,10 +18,10 @@ namespace IAB251_WPF_ASS2
 
         // In MainWindow or App.xaml.cs
         //private static CustomerManager _customerManager = new CustomerManager();
-        private static CustomerManager _customerManager = CustomerManager.Instance; // NEW
+        private static CustomerManager _customerManager = CustomerManager.Instance; 
 
         //public static CustomerManager CustomerManager => _customerManager;
-        public static CustomerManager CustomerManager => _customerManager; // NEW
+        public static CustomerManager CustomerManager => _customerManager; 
 
 
         //single instantiation of quotation manager

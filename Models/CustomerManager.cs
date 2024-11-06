@@ -10,16 +10,16 @@ namespace IAB251_ASS2.Models
 
         public class CustomerManager : INotifyPropertyChanged
         {
-        private static CustomerManager _instance; // NEW
-        public static CustomerManager Instance  // NEW
+        private static CustomerManager _instance; 
+        public static CustomerManager Instance  
         {
             get
             {
-                if (_instance == null)  // NEW
+                if (_instance == null)  
                 {
-                    _instance = new CustomerManager(); // NEW
+                    _instance = new CustomerManager(); 
                 }
-                return _instance; // NEW
+                return _instance; 
             }
         }
         // Event to notify UI of property changes
@@ -106,7 +106,7 @@ namespace IAB251_ASS2.Models
                 if (isValid)
                 {
                 SetLoggedInStatus(true);
-                CurrentUserEmail = email; // NEW
+                CurrentUserEmail = email; 
 
                 //debug
                 Console.WriteLine($"CurrentUserEmail set to: {CurrentUserEmail}");  // Debug: Print CurrentUserEmail
