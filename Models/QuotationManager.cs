@@ -141,11 +141,12 @@ namespace IAB251_ASS2.Models
         public void AcceptQuotationRequest(int requestID)
         {
             var request = quotationRequests.FirstOrDefault(r => r.RequestID == requestID);
-            var quotationnumber = quotations.FirstOrDefault(r => r.QuotationNumber == requestID);
-            if (request != null)
+            var quotation = quotations.FirstOrDefault(r => r.QuotationNumber == requestID);
+            if (request != null && quotation != null)
             {
                 request.Status = "Accepted";
-                quotationnumber.Status = "Accepted";
+                quotation.Status = "Accepted";
+                quotation.Message = "Your quotation has been accepted.";
             }
         }
         public List<Quotation> GetQuotationsForCustomer(string customerEmail)
@@ -167,17 +168,15 @@ namespace IAB251_ASS2.Models
         public void RejectQuotationRequest(int requestID, string message)
         {
             var request = quotationRequests.FirstOrDefault(r => r.RequestID == requestID);
-            var quotationnumber = quotations.FirstOrDefault(r => r.QuotationNumber == requestID);
-            if (request != null)
+            var quotation = quotations.FirstOrDefault(r => r.QuotationNumber == requestID);
+            if (request != null && quotation != null)
             {
                 request.Status = "Rejected";
-                quotationnumber.Status = "Rejected";
-                quotationnumber.Message = message;
-                // add something to send message to customer when they login next
-                //message;
-
+                quotation.Status = "Rejected";
+                quotation.Message = message;
             }
         }
+    
         public void GenerateSampleQuotations()
         {
             quotations.AddRange(new List<Quotation>
