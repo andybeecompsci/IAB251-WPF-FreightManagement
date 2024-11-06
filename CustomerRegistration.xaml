@@ -13,6 +13,9 @@
             <TextBlock Text="Email Address:" Margin="0,10,0,0" />
             <TextBox x:Name="EmailAddresstxt" />
 
+            <TextBlock Text="Company (Optional):" Margin="0,10,0,0" />
+            <TextBox x:Name="Companytxt" />
+
             <TextBlock Text="Phone Number:" Margin="0,10,0,0" />
             <TextBox x:Name="PhoneNumbertxt" />
 

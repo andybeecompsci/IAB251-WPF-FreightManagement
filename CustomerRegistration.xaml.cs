@@ -49,6 +49,7 @@ namespace IAB251_WPF_ASS2
                 FirstName = FirstNametxt.Text,
                 LastName = LastNametxt.Text,
                 EmailAddress = EmailAddresstxt.Text,
+                Company = Companytxt.Text, // Company can be left blank
                 PhoneNumber = PhoneNumbertxt.Text,
                 Address = Addresstxt.Text,
                 Password = Passwordtxt.Password
