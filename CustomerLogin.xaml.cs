@@ -19,6 +19,7 @@ namespace IAB251_WPF_ASS2
     public partial class CustomerLogin : Page
     {
         private CustomerManager customerManager;
+        private QuotationManager quotationManager;
 
         public CustomerLogin(CustomerManager manager)
         {
@@ -39,7 +40,11 @@ namespace IAB251_WPF_ASS2
             if (isLoggedIn)
             {
                 Messagetxt.Text = "Login successful!";
+                var customerMainWindow = new MainWindow(customerManager, quotationManager);
+
                 // Navigate to another window or perform other actions on successful login
+                var mainwindow = (NewMainWindow)Application.Current.MainWindow;
+                mainwindow.NavigateToPage(customerMainWindow);
             }
             else
             {
