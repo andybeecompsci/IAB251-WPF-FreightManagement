@@ -148,6 +148,20 @@ namespace IAB251_ASS2.Models
                 quotationnumber.Status = "Accepted";
             }
         }
+        public List<Quotation> GetQuotationsForCustomer(string customerEmail)
+        {
+            return quotations.Where(q => q.ClientEmail.Equals(customerEmail, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+        // Update quotation status to Proceed or Reject with customer message
+        public void UpdateQuotationStatus(int quotationNumber, string status, string message = "")
+        {
+            var quotation = quotations.FirstOrDefault(q => q.QuotationNumber == quotationNumber);
+            if (quotation != null)
+            {
+                quotation.Status = status;
+                quotation.Message = message;
+            }
+        }
 
         // rejects quotation and updates status to Rejected
         public void RejectQuotationRequest(int requestID, string message)

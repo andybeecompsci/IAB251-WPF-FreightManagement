@@ -26,7 +26,7 @@ namespace IAB251_WPF_ASS2
         private void LoadQuotations()
         {
             // Retrieve and display quotations for the customer in the DataGrid
-            //QuotationGridView.ItemsSource = _quotationManager.GetQuotationsForCustomer(_customerEmail);
+            QuotationGridView.ItemsSource = _quotationManager.GetQuotationsForCustomer(_customerEmail);
         }
 
         // Handle Proceed button click
@@ -35,7 +35,7 @@ namespace IAB251_WPF_ASS2
             if (QuotationGridView.SelectedItem is Quotation selectedQuotation)
             {
                 string message = MessageTextBox.Text;
-                //_quotationManager.UpdateQuotationStatus(selectedQuotation.QuotationNumber, "Proceed", message);
+                _quotationManager.UpdateQuotationStatus(selectedQuotation.QuotationNumber, "Proceed", message);
                 MessageBox.Show("You have chosen to proceed with this quotation.");
                 LoadQuotations(); // Refresh DataGrid to show updated status
             }
@@ -51,7 +51,7 @@ namespace IAB251_WPF_ASS2
             if (QuotationGridView.SelectedItem is Quotation selectedQuotation)
             {
                 string message = MessageTextBox.Text;
-                //_quotationManager.UpdateQuotationStatus(selectedQuotation.QuotationNumber, "Rejected", message);
+                _quotationManager.UpdateQuotationStatus(selectedQuotation.QuotationNumber, "Rejected", message);
                 MessageBox.Show("You have rejected this quotation.");
                 LoadQuotations(); // Refresh DataGrid to show updated status
             }
