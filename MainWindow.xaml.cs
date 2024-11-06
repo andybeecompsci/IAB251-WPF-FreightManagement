@@ -70,6 +70,17 @@ namespace IAB251_WPF_ASS2
             mainwindow.NavigateToPage(requestWindow);
         }
 
+        private void ViewQuotation_Click(Object sender, RoutedEventArgs e)
+        {
+            var customerManager = new CustomerManager();
+            var quotationManager = new QuotationManager(); // Initialize QuotationManager
+            var viewWindow = new CustomerQuotationView(App.QuotationManager, App.CustomerManager.CurrentUserEmail);
+
+            //navigate to page
+            var mainwindow = (NewMainWindow)Application.Current.MainWindow;
+            mainwindow.NavigateToPage(viewWindow);
+        }
+
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -77,6 +88,8 @@ namespace IAB251_WPF_ASS2
             var mainwindow = (NewMainWindow)Application.Current.MainWindow;
             mainwindow.NavigateToPage(new CustomerOrEmployee());
         }
+
+
 
     }
 }
