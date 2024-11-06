@@ -61,37 +61,28 @@ namespace IAB251_ASS2.Models
 
         public Quotation RequestToQuotation(QuotationRequest request)
         {
-            decimal lclCharges = RateSchedule.Rates
-                .FirstOrDefault(r => r.Type == "LCL Delivery Depot" && r.Type == request.Width + "ft")?
-                .GetFeeByContainerSize(request.Width) ?? 0;
+            // Hardcode charges based on container type
+            decimal lclCharges = request.Width == "20" ? 400m : 500m; // $400 for 20ft, $500 for 40ft
+            decimal depotCharges = request.Width == "20" ? 1375m : 1782m; // $1375 for 20ft, $1782 for 40ft
 
-
-            decimal depotCharges = RateSchedule.Rates
-                .Where(r => r.Type != "LCL Delivery Depot" && r.Type != "GST")
-                .Sum(r => decimal.Parse(request.Width == "20ft" ? r.TwentyFtFee.Trim('$') : r.FortyFtFee.Trim('$')));
-
-            int quotationnumber = request.RequestID;
-            string clientname = $"{request.CustomerInfo.FirstName} {request.CustomerInfo.LastName}";
-            string clientemail = request.CustomerInfo.EmailAddress;
-            DateTime dateissue = DateTime.Now;
+            int quotationNumber = request.RequestID;
+            string clientName = $"{request.CustomerInfo.FirstName} {request.CustomerInfo.LastName}";
+            string clientEmail = request.CustomerInfo.EmailAddress;
+            DateTime dateIssued = DateTime.Now;
             string status = request.Status;
-            string containertype = request.Width;
-            string scope = $"Container Quantity: {request.ContainerQuantity}Goods Type: {request.GoodsType}, Port Type: {request.PortType}, Packing Type: {request.PackingType}, " +
-                $"Quarantine Detail: {request.QuarantineDetails}, Fumigation Details: {request.FumigationDetails}";
+            string containerType = request.Width;
+            string scope = $"Container Quantity: {request.ContainerQuantity}, Goods Type: {request.GoodsType}, Port Type: {request.PortType}, Packing Type: {request.PackingType}, Quarantine Detail: {request.QuarantineDetails}, Fumigation Details: {request.FumigationDetails}";
             string message = "";
 
 
-            decimal gstAmount = depotCharges * 0.10m;  // 10% GST on depot charges
-
-
-
+            // Create a new Quotation object with hardcoded charges
             Quotation quotation = new Quotation(
-                quotationnumber,
-                clientname,
-                clientemail,
-                dateissue,
+                quotationNumber,
+                clientName,
+                clientEmail,
+                dateIssued,
                 status,
-                containertype,
+                containerType,
                 scope,
                 depotCharges,
                 lclCharges,
@@ -102,6 +93,7 @@ namespace IAB251_ASS2.Models
             AddQuotation(quotation);
             return quotation;
         }
+
 
         // calculate discount
         public double CalculateDiscount(int containerquantity, string quarantinedetails, string fumigationdetails)
