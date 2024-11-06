@@ -12,21 +12,13 @@
             <DataGrid x:Name="QuotationGridView" AutoGenerateColumns="False" Height="250">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Quotation Number" Binding="{Binding QuotationNumber}" Width="*"/>
-                    <!-- UPDATED -->
                     <DataGridTextColumn Header="Client Name" Binding="{Binding ClientName}" Width="*"/>
-                    <!-- UPDATED -->
                     <DataGridTextColumn Header="Date Issued" Binding="{Binding DateIssue, StringFormat=d}" Width="*"/>
-                    <!-- UPDATED -->
                     <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*"/>
-                    <!-- UPDATED -->
                     <DataGridTextColumn Header="Container Type" Binding="{Binding ContainerType}" Width="*"/>
-                    <!-- UPDATED -->
                     <DataGridTextColumn Header="Scope" Binding="{Binding Scope}" Width="*"/>
-                    <!-- UPDATED -->
                     <DataGridTextColumn Header="Depot Charges" Binding="{Binding DepotCharges, StringFormat=C}" Width="*"/>
-                    <!-- UPDATED -->
                     <DataGridTextColumn Header="LCL Charges" Binding="{Binding LCLCharges, StringFormat=C}" Width="*"/>
-                    <!-- UPDATED -->
                     <DataGridTextColumn Header="Message" Binding="{Binding Message, StringFormat=C}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
