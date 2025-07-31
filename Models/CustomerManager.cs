@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IAB251_ASS2.Models
+namespace IAB251_WPF_ASS2.Models
 {
 
         public class CustomerManager : INotifyPropertyChanged

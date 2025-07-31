@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using IAB251_ASS2.Models;
+using IAB251_WPF_ASS2.Models;
 
 namespace IAB251_WPF_ASS2
 {

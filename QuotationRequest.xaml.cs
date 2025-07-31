@@ -1,4 +1,4 @@
-﻿using IAB251_ASS2.Models;
+﻿using IAB251_WPF_ASS2.Models;
 using System;
 using System.Windows;
 using System.Windows.Controls;
