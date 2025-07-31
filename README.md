@@ -4,6 +4,40 @@
 
 This is a Windows Presentation Foundation (WPF) application developed in C# for managing freight and shipping quotations. The system provides separate interfaces for customers and employees, allowing for quotation requests, management, and tracking within a freight logistics environment.
 
+## Technical Stack & Skills Demonstrated
+
+### **Core Technologies**
+- **WPF (Windows Presentation Foundation)**: Modern UI framework for desktop applications
+- **C# (.NET Framework 4.8)**: Object-oriented programming with strong typing
+- **XAML**: Declarative UI markup for responsive user interfaces
+- **MVVM Pattern**: Model-View-ViewModel architecture for clean separation of concerns
+
+### **Programming Skills & Concepts**
+- **Object-Oriented Programming**: Classes, inheritance, encapsulation, and polymorphism
+- **Data Binding**: Two-way data binding between UI controls and data models
+- **Event Handling**: User interaction management and application flow control
+- **Singleton Pattern**: Implementation for manager classes (CustomerManager, EmployeeManager, QuotationManager)
+- **Collections Management**: Lists and data structures for managing business objects
+- **Exception Handling**: Robust error handling and user feedback mechanisms
+
+### **Database & Data Management**
+- **In-Memory Data Storage**: Efficient data management using C# collections
+- **Data Persistence**: Object serialization and state management
+- **CRUD Operations**: Create, Read, Update, Delete operations for business entities
+- **Data Validation**: Input validation and business rule enforcement
+
+### **API & Service Layer**
+- **Service Architecture**: Manager classes providing business logic services
+- **Data Access Layer**: Abstraction between UI and data management
+- **Business Logic Implementation**: Complex business rules and workflows
+- **Interface Design**: Clean separation between presentation and business logic
+
+### **UI/UX Development**
+- **Responsive Design**: Adaptive layouts and user-friendly interfaces
+- **Navigation Management**: Multi-window application flow and state management
+- **Form Validation**: Real-time input validation and user feedback
+- **Professional UI**: Clean, intuitive interface design following WPF best practices
+
 ## Application Features
 
 ### Customer Features
@@ -36,18 +70,26 @@ This is a Windows Presentation Foundation (WPF) application developed in C# for 
 
 ```
 IAB251_WPF_ASS2/
-├── Models/                 # Data models and business logic
-│   ├── Customer.cs        # Customer entity
-│   ├── Employee.cs        # Employee entity
-│   ├── Quotation.cs       # Quotation entity
-│   ├── CustomerManager.cs # Customer management logic
-│   ├── EmployeeManager.cs # Employee management logic
-│   └── QuotationManager.cs # Quotation management logic
-├── *.xaml                 # UI definitions
-├── *.xaml.cs             # Code-behind files
-├── App.xaml              # Application entry point
-└── bin/Debug/            # Compiled executable
+├── Models/                 # Business logic and data models
+│   ├── Customer.cs         # Customer entity with properties and validation
+│   ├── Employee.cs         # Employee entity with role-based access
+│   ├── Quotation.cs        # Quotation business object with status management
+│   ├── QuotationRequest.cs # Request processing and workflow management
+│   ├── CustomerManager.cs  # Customer CRUD operations and business logic
+│   ├── EmployeeManager.cs  # Employee authentication and management
+│   ├── QuotationManager.cs # Quotation lifecycle and status management
+│   └── BoolClass.cs        # Utility class for boolean operations
+├── *.xaml                  # WPF UI definitions using XAML markup
+├── *.xaml.cs              # Code-behind files with event handling and logic
+├── App.xaml               # Application entry point and resource definitions
+└── bin/Debug/             # Compiled executable and dependencies
 ```
+
+### **Architecture Highlights**
+- **Separation of Concerns**: Clear separation between UI (XAML), business logic (Models), and presentation logic (Code-behind)
+- **Manager Pattern**: Centralized data management through singleton manager classes
+- **Entity Design**: Well-structured business objects with proper encapsulation
+- **Resource Management**: Efficient handling of application resources and state
 
 ## Installation and Setup
 
